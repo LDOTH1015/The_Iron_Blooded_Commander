@@ -14,6 +14,11 @@ public class UIBase : MonoBehaviour
         }
     }
 
+    public virtual void Hide()
+    {
+        UIManager.Instance.Hide(gameObject.name);
+    }
+
     public virtual void PopUpAnimation()
     {
         
