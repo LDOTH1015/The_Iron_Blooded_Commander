@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public class KnightDataTable
+public class KnightData
 {
     public int ID { get; set; }
     public string NameEn { get; set; }
@@ -30,5 +30,5 @@ public class KnightDataTable
 [Serializable]
 public class KnightInfo
 {
-    public KnightDataTable[] KnightDatas;
+    public KnightData[] KnightDatas;
 }

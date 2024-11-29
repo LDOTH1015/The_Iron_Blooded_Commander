@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public class UnitDivisionDataTable
+public class UnitDivisionData
 {
     public int ID { get; set; }
     public string NameEn { get; set; }
@@ -18,5 +18,5 @@ public class UnitDivisionDataTable
 [Serializable]
 public class UnitDivisionInfo
 {
-    public UnitDivisionDataTable[] UnitDivisionDatas;
+    public UnitDivisionData[] UnitDivisionDatas;
 }
