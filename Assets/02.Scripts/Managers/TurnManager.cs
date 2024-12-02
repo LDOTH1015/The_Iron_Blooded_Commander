@@ -44,10 +44,12 @@ public class TurnManager : IManager
         }
     }
     
-    private void TransitionTo(ITurnState nextTurn)
+    public void TransitionTo(ITurnState nextTurn)
     {
         nextTurnState = nextTurn;
         currentTurnState.Exit();
+        
+        //배틀이벤트 존재 확인 여부 후 nextTurn을 배틀로 갈지 말지 결정
         InitTurn(nextTurn);
     }
 }
