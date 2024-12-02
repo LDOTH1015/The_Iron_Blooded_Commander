@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class DomainDataTable
@@ -19,13 +20,14 @@ public class DomainDataTable
     public int RampartLevel { get; set; }
     public float Tariff { get; set; }
 }
-
+[Serializable]
 public class DomainArray
 {
-    public DomainDataTable[] DomainDataTable;
+    public List<DomainDataTable> DomainDataTable;
 }
 
-public class DomainInfo : AutoSave<DomainDataTable>
+[Serializable]
+public class DomainInfo : AutoSave<DomainArray>
 {
     public DomainInfo() : base("DomainDataTable") { }
 }

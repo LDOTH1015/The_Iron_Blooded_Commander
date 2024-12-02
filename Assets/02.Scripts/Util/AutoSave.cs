@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 public abstract class AutoSave<T> where T : new()
 {
@@ -17,8 +17,7 @@ public abstract class AutoSave<T> where T : new()
             try
             {
                 var json = Resources.Load($"JsonData/{fileName}") as TextAsset;
-                Data = JsonUtility.FromJson<T>(json.ToString());
-
+                Data = JsonConvert.DeserializeObject<T>(json.ToString());
                 if (Data == null)
                 {
                     Data = new T();
