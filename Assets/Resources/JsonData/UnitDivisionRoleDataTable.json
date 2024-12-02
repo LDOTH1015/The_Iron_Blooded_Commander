@@ -1,0 +1,34 @@
+﻿{
+  "UnitDivisionRoleDataTable": [
+    {
+      "ID": 2200,
+      "Name": "부대 임무 이름 1",
+      "Description": "더미데이터",
+      "Condition": 30
+    },
+    {
+      "ID": 2201,
+      "Name": "부대 임무 이름 2",
+      "Description": "더미데이터",
+      "Condition": 20
+    },
+    {
+      "ID": 2202,
+      "Name": "부대 임무 이름 3",
+      "Description": "더미데이터",
+      "Condition": 25
+    },
+    {
+      "ID": 2203,
+      "Name": "부대 임무 이름 4",
+      "Description": "더미데이터",
+      "Condition": 34
+    },
+    {
+      "ID": 2204,
+      "Name": "부대 임무 이름 5",
+      "Description": "더미데이터",
+      "Condition": 20
+    }
+  ]
+}

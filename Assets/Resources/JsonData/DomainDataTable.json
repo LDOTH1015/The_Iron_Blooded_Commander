@@ -1,0 +1,21 @@
+﻿{
+  "DomainDataTable": [
+    {
+      "ID": 2200,
+      "Name": "영지",
+      "LordID": "5000",
+      "Population": 1,
+      "PublicOpinion": 1,
+      "Fame": 1,
+      "Gold": 1,
+      "Steel": 1,
+      "Food": 1,
+      "Captivity": 1,
+      "MarketLevel": 1,
+      "MineLevel": 1,
+      "FarmlandLevel": 1,
+      "RampartLevel": 1,
+      "Tariff": 0.8
+    }
+  ]
+}

@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class DataManager : IManager
 {
+    public KnightInfo knightInfo;
+    public UnitTypeInfo unitTypeInfo;
+    public UnitDivisionInfo unitDivisionnfo;
+    public DomainInfo domainInfo;
+    public EventInfo eventData;
+
     public void Initialize()
     {
-        throw new System.NotImplementedException();
+        domainInfo = new DomainInfo();
+        eventData = new EventInfo();
     }
 }
