@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 public abstract class AutoSave<T> where T : new()
 {
     private string filePath;
 
-    public T[] Data { get; private set; }
+    public T Data { get; private set; }
 
     protected AutoSave(string fileName)
     {
@@ -13,36 +14,51 @@ public abstract class AutoSave<T> where T : new()
 
         if (File.Exists(filePath))
         {
-            string json = File.ReadAllText(filePath);
-            Data = JsonUtility.FromJson<Wrapper<T>>(json).Items;
+            try
+            {
+                var json = Resources.Load($"JsonData/{fileName}") as TextAsset;
+                Data = JsonUtility.FromJson<T>(json.ToString());
+
+                if (Data == null)
+                {
+                    Data = new T();
+                }
+            }
+            catch (Exception ex)
+            {
+                Data = new T();
+            }
         }
         else
         {
-            Data = new T[0];
+            Data = new T();
             Save();
         }
     }
 
     public void Save()
     {
-        var wrapper = new Wrapper<T> { Items = Data };
-        string json = JsonUtility.ToJson(wrapper, true);
-        File.WriteAllText(filePath, json);
-
-        #if UNITY_EDITOR
-        UnityEditor.AssetDatabase.Refresh();
-        #endif
+        try
+        {
+            string json = JsonUtility.ToJson(Data, true);
+            File.WriteAllText(filePath, json);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"{ex.Message}");
+        }
     }
 
-    public void Modify(Action<T[]> modifyAction)
+    public void Modify(Action<T> modifyAction)
     {
-        modifyAction(Data);
-        Save();
-    }
-
-    [Serializable]
-    private class Wrapper<U>
-    {
-        public U[] Items;
+        try
+        {
+            modifyAction(Data);
+            Save();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"{ex.Message}");
+        }
     }
 }

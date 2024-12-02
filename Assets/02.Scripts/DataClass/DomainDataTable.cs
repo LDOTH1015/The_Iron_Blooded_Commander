@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public class DomainData
+public class DomainDataTable
 {
     public int ID { get; set; }
     public string Name { get; set; }
@@ -20,8 +20,12 @@ public class DomainData
     public float Tariff { get; set; }
 }
 
-[Serializable]
-public class DomainInfo : AutoSave<DomainData>
+public class DomainArray
 {
-    public DomainInfo() : base("DomainData") { }
+    public DomainDataTable[] DomainDataTable;
+}
+
+public class DomainInfo : AutoSave<DomainDataTable>
+{
+    public DomainInfo() : base("DomainDataTable") { }
 }

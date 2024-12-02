@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public class EventData
+public class EventDataTable
 {
     public int ID { get; set; }
     public string Name { get; set; }
@@ -13,8 +13,12 @@ public class EventData
     public int StartDay { get; set; }
 }
 
-[Serializable]
-public class EventInfo : AutoSave<EventData>
+public class EventDataArray
 {
-    public EventInfo() : base("EventData") { }
+    public EventDataTable[] EventDataTable;
+}
+
+public class EventInfo : AutoSave<EventDataTable>
+{
+    public EventInfo() : base("EventDataTable") { }
 }
