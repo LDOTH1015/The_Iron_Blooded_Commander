@@ -11,7 +11,7 @@ public interface ITurnState
     
     // AI턴 진입 시
     // 1. AI재화상태 업데이트
-    // 2. AI상태와 플레이어 상태 비교 후 
+    // 2. AI상태와 플레이어 상태 비교 후 침략여부 결정
     public void Enter();
     
     // 각 상태의 실행 중 로직 적는 곳

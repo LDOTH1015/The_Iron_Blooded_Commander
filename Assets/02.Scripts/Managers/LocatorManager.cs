@@ -12,10 +12,11 @@ public interface IManager
 
 public class LocatorManager : MonoSingleton<LocatorManager>
 {
-    DataManager dataManager = new DataManager();
-    TurnManager turnManager = new TurnManager();
-    BattleManager battleManager = new BattleManager();
-    SoundManager soundManager = new SoundManager();
+    public DataManager dataManager = new DataManager();
+    public TurnManager turnManager = new TurnManager();
+    public BattleManager battleManager = new BattleManager();
+    public SoundManager soundManager = new SoundManager();
+    public TimeManager timeManager = new TimeManager();
     
     public override void Awake()
     {

@@ -49,7 +49,7 @@ public class TurnManager : IManager
         nextTurnState = nextTurn;
         currentTurnState.Exit();
         
-        //배틀이벤트 존재 확인 여부 후 nextTurn을 배틀로 갈지 말지 결정
+        //현재 턴이 플레이어 턴일 경우 배틀이벤트 존재 확인 여부 후 nextTurn을 배틀로 갈지 말지 결정
         InitTurn(nextTurn);
     }
 }
