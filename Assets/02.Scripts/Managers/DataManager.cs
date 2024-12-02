@@ -8,5 +8,4 @@ public class DataManager : IManager
     {
         throw new System.NotImplementedException();
     }
-    
 }
