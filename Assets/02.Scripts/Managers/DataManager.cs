@@ -19,5 +19,7 @@ public class DataManager : IManager
         unitDivisionrole = new UnitDivisionRoleInfo();
         domainInfo = new DomainInfo();
         eventData = new EventInfo();
+
+        //domainInfo.Modify()
     }
 }
