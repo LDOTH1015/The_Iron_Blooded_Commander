@@ -6,6 +6,8 @@ public class TimeManager : IManager
 {
     [Header("Date Variables")]
     private int playerCurrentDate;
+    
+    [HideInInspector]
     public int currentYear;
     public int currentMonth;
     public int currentDay;
@@ -14,8 +16,9 @@ public class TimeManager : IManager
     // 이벤트데이터테이블
     private EventInfo eventInfo = LocatorManager.Instance.dataManager.eventData;
     
+    [HideInInspector]
     // 대기열 컬렉션 만들기
-    private List<EventDataTable> scheduledEvents;
+    public List<EventDataTable> scheduledEvents;
     
     public void Initialize()
     {
