@@ -10,7 +10,7 @@ public class KnightDataTable
     public string Description { get; set; }
     public int Rank { get; set; }
     public string Prefeb { get; set; }
-    public string Image { get; set; }
+    public string Thumbnail { get; set; }
     public float AttackPower { get; set; }
     public float AttackSpeed { get; set; }
     public float Health { get; set; }
