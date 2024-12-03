@@ -8,7 +8,9 @@
       "MaxClearTime": 20,
       "EarlyCompletionPhrase": "좋은훈련상태로인해 조기훈련완료",
       "DelayedCompletionPhrase": "산만한 집중력으로 인해 예상기간보다 훈련이 지연됨",
-      "DueDate": 0
+      "DueDate": 0,
+      "ResultValue": 0.0,
+      "ResultType": "TrainingLevel"
     },
     {
       "ID": 4500,
@@ -18,7 +20,9 @@
       "MaxClearTime": 5,
       "EarlyCompletionPhrase": "적이 침략한다는 소문이 퍼졌다. 준비하자",
       "DelayedCompletionPhrase": "적이 침략한다는 소문이 퍼졌다. 준비하자",
-      "DueDate": 0
+      "DueDate": 0,
+      "ResultValue": 0.0,
+      "ResultType": "0"
     },
     {
       "ID": 4501,
@@ -28,7 +32,9 @@
       "MaxClearTime": 3,
       "EarlyCompletionPhrase": "전투를 준비하자",
       "DelayedCompletionPhrase": "전투를준비하자",
-      "DueDate": 0
+      "DueDate": 0,
+      "ResultValue": 0.0,
+      "ResultType": "0"
     }
   ]
 }

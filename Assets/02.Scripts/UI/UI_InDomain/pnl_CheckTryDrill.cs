@@ -26,10 +26,22 @@ public class pnl_CheckTryDrill : UIBase
     {
         LocatorManager.Instance.timeManager.AddEventToTimeline(4000);
         // 결과값 미리 계산해서 sceduledEvents에 집어넣기
+        CalculateResultValue();
     }
 
     private void OnCancelBtnClicked()
     {
         Hide();
+    }
+
+    private void CalculateResultValue()
+    {
+        for (int i = 0; i < LocatorManager.Instance.timeManager.scheduledEvents.Count; i++)
+        {
+            if (LocatorManager.Instance.timeManager.scheduledEvents[i].ResultType == "TrainingLevel")
+            {
+                LocatorManager.Instance.timeManager.scheduledEvents[i].ResultValue = 1.0f;
+            }
+        }
     }
 }
