@@ -23,7 +23,7 @@ public class TimeManager : IManager
         
     }
 
-    public void AddEvenetToTimeline(int ID)
+    public void AddEventToTimeline(int ID)
     {
         // TODO: 타임라인 리스트?딕셔너리?에 이벤트발생 시 해당이벤트 넣어주는 로직. param을 뭐로 설정할지 헷갈림
         

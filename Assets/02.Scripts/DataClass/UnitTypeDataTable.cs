@@ -1,13 +1,13 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
-public class KnightData
+public class UnitTypeDataTable
 {
     public int ID { get; set; }
     public string NameEn { get; set; }
     public string NameKr { get; set; }
     public string Description { get; set; }
-    public int Rank { get; set; }
     public string Prefeb { get; set; }
     public string Image { get; set; }
     public float AttackPower { get; set; }
@@ -16,10 +16,6 @@ public class KnightData
     public float Defense { get; set; }
     public float MoveSpeed { get; set; }
     public float AttackRange { get; set; }
-    public int Leadership { get; set; }
-    public int Intelligence { get; set; } 
-    public int Loyalty { get; set; }
-    public int DownPayment { get; set; }
     public int Salary { get; set; }
     public int TrainingToo { get; set; }
     public int Experience { get; set; }
@@ -27,8 +23,12 @@ public class KnightData
     public float ExperienceWeighted { get; set; }
 }
 
-[Serializable]
-public class KnightInfo
+public class UnitTypeDataArray
 {
-    public KnightData[] KnightDatas;
+    public List<UnitTypeDataTable> UnitTypeDataTable;
+}
+
+public class UnitTypeInfo : AutoSave<UnitTypeDataArray>
+{
+    public UnitTypeInfo() : base("UnitTypeDataTable") { }
 }

@@ -73,4 +73,6 @@ public class UIManager : MonoSingleton<UIManager>
         Hide(uiName);
         SceneManager.LoadScene(sceneName);
     }
+    
+    
 }

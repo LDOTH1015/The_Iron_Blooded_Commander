@@ -23,7 +23,7 @@ public class LocatorManager : MonoSingleton<LocatorManager>
         base.Awake();
         
         // 여기서 각 매니저들 초기화 순서 관리가능
-        // dataManager.Initialize();
+        dataManager.Initialize();
         // soundManager.Initialize();
         // turnManager.Initialize();
         // battleManager.Initialize();

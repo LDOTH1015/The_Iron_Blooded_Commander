@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
-public class DomainData
+public class DomainDataTable
 {
     public int ID { get; set; }
     public string Name { get; set; }
@@ -21,7 +22,13 @@ public class DomainData
 }
 
 [Serializable]
-public class DomainInfo : AutoSave<DomainData>
+public class DomainArray
 {
-    public DomainInfo() : base("DomainData") { }
+    public List<DomainDataTable> DomainDataTable;
+}
+
+[Serializable]
+public class DomainInfo : AutoSave<DomainArray>
+{
+    public DomainInfo() : base("DomainDataTable") { }
 }
