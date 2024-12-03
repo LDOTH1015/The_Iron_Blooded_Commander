@@ -1,10 +1,10 @@
 
 public class TurnManager : IManager
 {
-    PlayerTurnState playerTurnState;
-    AITurnState aiTurnState;
-    WorldTurnState worldTurnState;
-    BattleTurnState battleTurnState;
+    public PlayerTurnState playerTurnState;
+    public AITurnState aiTurnState;
+    public WorldTurnState worldTurnState;
+    public BattleTurnState battleTurnState;
 
     private ITurnState currentTurnState;
     private ITurnState previousTurnState;

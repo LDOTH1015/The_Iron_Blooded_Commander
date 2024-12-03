@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerTurnState : ITurnState
 {
+    // TimeManager로부터 받는 종료된 이벤트 ID리스트
+    public List<int> completedEvents = new List<int>();
+    
     public void Enter()
     {
         // TODO: 플레이어 턴 진입 시 
@@ -15,7 +18,7 @@ public class PlayerTurnState : ITurnState
     public void Execute()
     {
         // TODO: 이벤트가 발생하면(영지에서 이벤트관련 UI버튼 눌리면) 해당 이벤트발생을 타임매니저에 전달
-        
+                
     }
 
     // TransitionTo BattleTurn or AITurn
