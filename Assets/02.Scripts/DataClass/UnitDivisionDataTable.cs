@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
-public class UnitDivisionData
+public class UnitDivisionDataTable
 {
     public int ID { get; set; }
     public string NameEn { get; set; }
@@ -15,8 +16,12 @@ public class UnitDivisionData
     public float Morale { get; set; }
 }
 
-[Serializable]
-public class UnitDivisionInfo
+public class UnitDivisionDataArray
 {
-    public UnitDivisionData[] UnitDivisionDatas;
+    public List<UnitDivisionDataTable> UnitDivisionDataTable;
+}
+
+public class UnitDivisionInfo : AutoSave<UnitDivisionDataArray>
+{
+    public UnitDivisionInfo() : base("UnitDivisionDataTable") { }
 }

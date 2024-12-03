@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class EventDataTable
@@ -15,10 +16,10 @@ public class EventDataTable
 
 public class EventDataArray
 {
-    public EventDataTable[] EventDataTable;
+    public List<EventDataTable> EventDataTable;
 }
 
-public class EventInfo : AutoSave<EventDataTable>
+public class EventInfo : AutoSave<EventDataArray>
 {
     public EventInfo() : base("EventDataTable") { }
 }

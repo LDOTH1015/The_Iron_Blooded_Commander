@@ -20,6 +20,7 @@ public class DomainDataTable
     public int RampartLevel { get; set; }
     public float Tariff { get; set; }
 }
+
 [Serializable]
 public class DomainArray
 {
