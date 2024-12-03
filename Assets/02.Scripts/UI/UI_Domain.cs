@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UIDomain : UIBase
+public class UI_Domain : UIBase
 {
     UIManager uiManager = UIManager.Instance;
     
@@ -13,6 +13,6 @@ public class UIDomain : UIBase
     private void InitializeDomainUI()
     {
         // DomainScene초기화 -> 해당 씬의 모든 UI버튼들 불러오기
-        uiManager.Show<UICastleButton>();
+        uiManager.Show<UI_CastleButton>();
     }
 }
