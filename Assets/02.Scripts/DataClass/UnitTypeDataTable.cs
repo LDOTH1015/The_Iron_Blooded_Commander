@@ -17,7 +17,7 @@ public class UnitTypeDataTable
     public float MoveSpeed { get; set; }
     public float AttackRange { get; set; }
     public int Salary { get; set; }
-    public int TrainingToo { get; set; }
+    public int TrainingLevel { get; set; }
     public int Experience { get; set; }
     public float TrainingWeighted { get; set; }
     public float ExperienceWeighted { get; set; }
