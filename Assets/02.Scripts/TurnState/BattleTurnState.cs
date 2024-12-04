@@ -8,6 +8,7 @@ public class BattleTurnState : ITurnState
     public void Enter()
     {
         throw new System.NotImplementedException();
+        
     }
 
     // 뭐 할게 있나?

@@ -12,9 +12,9 @@ public class TimeManager : IManager
     public int currentMonth;
     public int currentDay;
 
-    
     // 이벤트데이터테이블
-    private EventInfo eventInfo = LocatorManager.Instance.dataManager.eventData;
+    private EventInfo eventInfo; 
+    
     
     [HideInInspector]
     // 대기열 컬렉션 만들기
@@ -27,6 +27,7 @@ public class TimeManager : IManager
         // 대기열 컬렉션의 경우에도 저장하기, 불러오기 생각해서 캐싱해올 방법 생각해두기
         playerCurrentDate = 0;
         scheduledEvents = new List<EventDataTable>();
+        eventInfo = LocatorManager.Instance.dataManager.eventData;
     }
 
     // scheduledEvent에 이벤트를 등록하는 모든행위에 반드시 수반되어야 하는 메서드
@@ -79,25 +80,27 @@ public class TimeManager : IManager
     // 예정된 이벤트들의 결과를 UI에 표시해주기(이건 여기서 할 일아님, PlayerState나 UI로직에서 구현)
     public void UpdateTimeline()
     {
-        // [0]번째 이벤트의 DueDate만큼 playerCurrentDate를 더해주기
-        playerCurrentDate += scheduledEvents[0].DueDate;
-        // 더한 날짜를 기준으로 년월일 정보 업데이트
-        UpdateDateForUI(playerCurrentDate);
-        
-        int _subtractStandard = scheduledEvents[0].DueDate;
-        for (int i = 0; i < scheduledEvents.Count; i++)
+        if (scheduledEvents.Count > 0)
         {
-            // 스케쥴이벤트리스트의 [0]번째 이벤트의 DueDate만큼 해당리스트 모든 원소의 DueDate를 차감
-            scheduledEvents[i].DueDate -= _subtractStandard;
-        }
-        for (int i = 0; i < scheduledEvents.Count; i++)
-        {
-            // DueDate가 ==0인 애들의 ID를 모두 PlayerState에 넘겨주기
-            // DueDate가 ==0인 이벤트들을 대기열 리스트에서 제거
-            if (scheduledEvents[i].DueDate == 0)
+            // [0]번째 이벤트의 DueDate만큼 playerCurrentDate를 더해주기
+            playerCurrentDate += scheduledEvents[0].DueDate;
+            // 더한 날짜를 기준으로 년월일 정보 업데이트
+            UpdateDateForUI(playerCurrentDate);
+            int _subtractStandard = scheduledEvents[0].DueDate;
+            for (int i = 0; i < scheduledEvents.Count; i++)
             {
-                LocatorManager.Instance.turnManager.playerTurnState.completedEvents.Add(scheduledEvents[i].ID);
-                scheduledEvents.RemoveAt(i);
+                // 스케쥴이벤트리스트의 [0]번째 이벤트의 DueDate만큼 해당리스트 모든 원소의 DueDate를 차감
+                scheduledEvents[i].DueDate -= _subtractStandard;
+            }
+            for (int i = 0; i < scheduledEvents.Count; i++)
+            {
+                // DueDate가 ==0인 애들의 ID를 모두 PlayerState에 넘겨주기
+                // DueDate가 ==0인 이벤트들을 대기열 리스트에서 제거
+                if (scheduledEvents[i].DueDate == 0)
+                {
+                    LocatorManager.Instance.turnManager.playerTurnState.completedEvents.Add(scheduledEvents[i]);
+                    scheduledEvents.RemoveAt(i);
+                }
             }
         }
     }
