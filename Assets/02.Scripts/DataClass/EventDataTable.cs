@@ -11,7 +11,9 @@ public class EventDataTable : IData
     public int MaxClearTime { get; set; }
     public string EarlyCompletionPhrase { get; set; }
     public string DelayedCompletionPhrase { get; set; }
-    public int StartDay { get; set; }
+    public int DueDate { get; set; }
+    public float ResultValue { get; set; }
+    public string ResultType { get; set; }
 }
 
 public class EventDataArray
