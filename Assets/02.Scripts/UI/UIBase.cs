@@ -6,17 +6,35 @@ public class UIBase : MonoBehaviour
 {
     public Canvas canvas;
 
+    protected string canvasType = "canvas";
+    public void SetCanvasType(string type)
+    {
+        canvasType = type;
+    }
+
     protected virtual void Awake()
     {
+        //Origin
         if (canvas == null)
         {
             canvas = GetComponent<Canvas>();
         }
+
+        //if (canvas == null)
+        //{
+        //    canvas = UICanvasManager.Instance?.GetCanvas(canvasType);
+        //}
+        //
+        //if (canvas != null)
+        //{
+        //    transform.SetParent(canvas.transform, false);
+        //}
     }
 
     public virtual void Hide()
     {
         UIManager.Instance.Hide(gameObject.name);
+        //UIManager2.Instance.Hide(gameObject.name);
     }
 
     public virtual void PopUpAnimation()

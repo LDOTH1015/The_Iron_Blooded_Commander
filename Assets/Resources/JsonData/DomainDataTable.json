@@ -1,5 +1,72 @@
-{
-    "DomainDataTable": [
-        {}
-    ]
+﻿{
+  "DomainDataTable": [
+    {
+      "ID": 2200,
+      "Name": "영지",
+      "LordID": "5000",
+      "Population": 1,
+      "PublicOpinion": 1,
+      "Fame": 1,
+      "Gold": 1,
+      "Steel": 1,
+      "Food": 1,
+      "Captivity": 1,
+      "MarketLevel": 1,
+      "MineLevel": 1,
+      "FarmlandLevel": 1,
+      "RampartLevel": 1,
+      "Tariff": 0.8
+    },
+    {
+      "ID": 2201,
+      "Name": "ai1",
+      "LordID": "5001",
+      "Population": 1,
+      "PublicOpinion": 1,
+      "Fame": 1,
+      "Gold": 1,
+      "Steel": 1,
+      "Food": 1,
+      "Captivity": 1,
+      "MarketLevel": 1,
+      "MineLevel": 1,
+      "FarmlandLevel": 1,
+      "RampartLevel": 1,
+      "Tariff": 0.8
+    },
+    {
+      "ID": 2202,
+      "Name": "ai2",
+      "LordID": "5002",
+      "Population": 1,
+      "PublicOpinion": 1,
+      "Fame": 1,
+      "Gold": 1,
+      "Steel": 1,
+      "Food": 1,
+      "Captivity": 1,
+      "MarketLevel": 1,
+      "MineLevel": 1,
+      "FarmlandLevel": 1,
+      "RampartLevel": 1,
+      "Tariff": 0.8
+    },
+    {
+      "ID": 2203,
+      "Name": "ai3",
+      "LordID": "5003",
+      "Population": 1,
+      "PublicOpinion": 1,
+      "Fame": 1,
+      "Gold": 1,
+      "Steel": 1,
+      "Food": 1,
+      "Captivity": 1,
+      "MarketLevel": 1,
+      "MineLevel": 1,
+      "FarmlandLevel": 1,
+      "RampartLevel": 1,
+      "Tariff": 0.8
+    }
+  ]
 }

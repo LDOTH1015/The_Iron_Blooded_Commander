@@ -16,25 +16,25 @@
       "ID": 4500,
       "Name": "적침략소식입수",
       "Description": "적이 침략한다는 소문이 퍼졌다",
-      "MinClearTime": 5,
-      "MaxClearTime": 5,
+      "MinClearTime": 1,
+      "MaxClearTime": 3,
       "EarlyCompletionPhrase": "적이 침략한다는 소문이 퍼졌다. 준비하자",
       "DelayedCompletionPhrase": "적이 침략한다는 소문이 퍼졌다. 준비하자",
       "DueDate": 0,
       "ResultValue": 0.0,
-      "ResultType": "0"
+      "ResultType": "WarnOfAttacked"
     },
     {
       "ID": 4501,
       "Name": "적침략",
       "Description": "적이 영지경계에 진입했다",
-      "MinClearTime": 3,
-      "MaxClearTime": 3,
+      "MinClearTime": 10,
+      "MaxClearTime": 10,
       "EarlyCompletionPhrase": "전투를 준비하자",
       "DelayedCompletionPhrase": "전투를준비하자",
       "DueDate": 0,
       "ResultValue": 0.0,
-      "ResultType": "0"
+      "ResultType": "UnderAttack"
     }
   ]
 }
