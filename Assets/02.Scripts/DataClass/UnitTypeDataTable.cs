@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 
 [Serializable]
-public class UnitTypeDataTable
+public class UnitTypeDataTable : IData
 {
     public int ID { get; set; }
     public string NameEn { get; set; }
     public string NameKr { get; set; }
     public string Description { get; set; }
     public string Prefeb { get; set; }
-    public string Image { get; set; }
+    public string Thumbnail { get; set; }
     public float AttackPower { get; set; }
     public float AttackSpeed { get; set; }
     public float Health { get; set; }
@@ -17,7 +17,7 @@ public class UnitTypeDataTable
     public float MoveSpeed { get; set; }
     public float AttackRange { get; set; }
     public int Salary { get; set; }
-    public int TrainingToo { get; set; }
+    public int TrainingLevel { get; set; }
     public int Experience { get; set; }
     public float TrainingWeighted { get; set; }
     public float ExperienceWeighted { get; set; }

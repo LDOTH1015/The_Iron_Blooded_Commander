@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public interface IData
+{
+    int ID { get; }
+}
 public class DataManager : IManager
 {
     public KnightInfo knightInfo;
@@ -22,6 +25,22 @@ public class DataManager : IManager
         domainInfo = new DomainInfo();
         eventData = new EventInfo();
 
-        //domainInfo.Modify()
+        //»ç¿ë¹ý
+        domainInfo.Modify(data => 
+        { 
+            data.DomainDataTable[0].Name = ""; 
+        });
+
+        Debug.Log(FindDataById(knightInfo.Data.KnightDataTable,1000).NameKr);
+    }
+
+    public T FindDataById<T>(List<T> dataList, int id) where T : IData
+    {
+        foreach (T data in dataList)
+        {
+            if (data.ID == id)
+                return data;
+        }
+        return default;
     }
 }
