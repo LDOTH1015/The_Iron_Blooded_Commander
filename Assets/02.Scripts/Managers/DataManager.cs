@@ -25,7 +25,7 @@ public class DataManager : IManager
         domainInfo = new DomainInfo();
         eventData = new EventInfo();
 
-        //»ç¿ë¹ý
+        //ï¿½ï¿½ï¿½ï¿½
         domainInfo.Modify(data => 
         { 
             data.DomainDataTable[0].Name = ""; 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomCubeFieldGenerator : MonoBehaviour
+public class BoxCubeFieldGenerator : MonoBehaviour
 {
     public GameObject cubePrefab; // 복사할 Cube 프리팹
     public int rows = 10; // 행 개수
