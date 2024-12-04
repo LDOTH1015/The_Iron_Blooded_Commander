@@ -1,0 +1,40 @@
+﻿{
+  "EventDataTable": [
+    {
+      "ID": 4000,
+      "Name": "병사훈련",
+      "Description": "병사를훈련시킨다",
+      "MinClearTime": 15,
+      "MaxClearTime": 20,
+      "EarlyCompletionPhrase": "좋은훈련상태로인해 조기훈련완료",
+      "DelayedCompletionPhrase": "산만한 집중력으로 인해 예상기간보다 훈련이 지연됨",
+      "DueDate": 0,
+      "ResultValue": 0.0,
+      "ResultType": "TrainingLevel"
+    },
+    {
+      "ID": 4500,
+      "Name": "적침략소식입수",
+      "Description": "적이 침략한다는 소문이 퍼졌다",
+      "MinClearTime": 5,
+      "MaxClearTime": 5,
+      "EarlyCompletionPhrase": "적이 침략한다는 소문이 퍼졌다. 준비하자",
+      "DelayedCompletionPhrase": "적이 침략한다는 소문이 퍼졌다. 준비하자",
+      "DueDate": 0,
+      "ResultValue": 0.0,
+      "ResultType": "0"
+    },
+    {
+      "ID": 4501,
+      "Name": "적침략",
+      "Description": "적이 영지경계에 진입했다",
+      "MinClearTime": 3,
+      "MaxClearTime": 3,
+      "EarlyCompletionPhrase": "전투를 준비하자",
+      "DelayedCompletionPhrase": "전투를준비하자",
+      "DueDate": 0,
+      "ResultValue": 0.0,
+      "ResultType": "0"
+    }
+  ]
+}
