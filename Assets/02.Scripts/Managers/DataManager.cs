@@ -16,6 +16,8 @@ public class DataManager : IManager
 
     public void Initialize()
     {
+        // TODO: 저장된 데이터 불러오기랑 새게임 시 새로운 플레이어데이터만들기. 두 가지 경우가 있기때문에 조건식달아야함
+
         knightInfo = new KnightInfo();
         unitTypeInfo = new UnitTypeInfo();
         unitDivisionnfo = new UnitDivisionInfo();

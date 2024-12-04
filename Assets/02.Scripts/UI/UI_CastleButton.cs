@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UICastleButton : UIBase, IPointerEnterHandler, IPointerExitHandler
+public class UI_CastleButton : UIBase, IPointerEnterHandler, IPointerExitHandler
 {
     private GameObject uiCastleOutLine;
     private Button button;
