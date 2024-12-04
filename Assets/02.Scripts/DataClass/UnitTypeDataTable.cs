@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 [Serializable]
-public class UnitTypeDataTable
+public class UnitTypeDataTable : IData
 {
     public int ID { get; set; }
     public string NameEn { get; set; }
