@@ -23,12 +23,14 @@ public class TurnManager : IManager
 
     private void InitTurn(ITurnState currentTurn)
     {
-        if (currentTurnState != null)
+        if (currentTurnState == null)
         {
-            previousTurnState = currentTurnState;
+            currentTurnState = currentTurn;
         }
         currentTurnState = currentTurn;
+        
         currentTurnState.Enter();
+        
         ExecuteTurn(currentTurnState);
     }
 
@@ -47,8 +49,6 @@ public class TurnManager : IManager
     public void TransitionTo(ITurnState nextTurn)
     {
         nextTurnState = nextTurn;
-        currentTurnState.Exit();
-        
         //현재 턴이 플레이어 턴일 경우 배틀이벤트 존재 확인 여부 후 nextTurn을 배틀로 갈지 말지 결정
         InitTurn(nextTurn);
     }

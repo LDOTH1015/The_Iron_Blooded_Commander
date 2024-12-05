@@ -3,14 +3,11 @@
     {
       "ID": 2200,
       "Name": "영지",
-<<<<<<< Updated upstream
       "LordID": "5000",
-=======
       "LordID": 5000,
       "KnightID": 0,
       "UnitDivisionID": 0,
       "StrategyID": 0,
->>>>>>> Stashed changes
       "Population": 1,
       "PublicOpinion": 1,
       "Fame": 1,
@@ -27,14 +24,11 @@
     {
       "ID": 2201,
       "Name": "ai1",
-<<<<<<< Updated upstream
       "LordID": "5001",
-=======
       "LordID": 5001,
       "KnightID": 0,
       "UnitDivisionID": 0,
       "StrategyID": 0,
->>>>>>> Stashed changes
       "Population": 1,
       "PublicOpinion": 1,
       "Fame": 1,
@@ -51,14 +45,11 @@
     {
       "ID": 2202,
       "Name": "ai2",
-<<<<<<< Updated upstream
       "LordID": "5002",
-=======
       "LordID": 5002,
       "KnightID": 0,
       "UnitDivisionID": 0,
       "StrategyID": 0,
->>>>>>> Stashed changes
       "Population": 1,
       "PublicOpinion": 1,
       "Fame": 1,
@@ -75,14 +66,11 @@
     {
       "ID": 2203,
       "Name": "ai3",
-<<<<<<< Updated upstream
       "LordID": "5003",
-=======
       "LordID": 5003,
       "KnightID": 0,
       "UnitDivisionID": 0,
       "StrategyID": 0,
->>>>>>> Stashed changes
       "Population": 1,
       "PublicOpinion": 1,
       "Fame": 1,

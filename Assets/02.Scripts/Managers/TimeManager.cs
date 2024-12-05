@@ -98,7 +98,7 @@ public class TimeManager : IManager
                 // DueDate가 ==0인 이벤트들을 대기열 리스트에서 제거
                 if (scheduledEvents[i].DueDate == 0)
                 {
-                    LocatorManager.Instance.turnManager.playerTurnState.completedEvents.Add(scheduledEvents[i]);
+                    LocatorManager.Instance.turnManager.playerTurnState.temptList.Add(scheduledEvents[i]);
                     scheduledEvents.RemoveAt(i);
                 }
             }
