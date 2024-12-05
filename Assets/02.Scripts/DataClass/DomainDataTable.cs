@@ -6,7 +6,10 @@ public class DomainDataTable : IData
 {
     public int ID { get; set; }
     public string Name { get; set; }
-    public string LordID { get; set; }
+    public int LordID { get; set; }
+    public int KnightID { get; set; }
+    public int UnitDivisionID { get; set; }
+    public int StrategyID { get; set; }
     public int Population { get; set; }
     public int PublicOpinion { get; set; }
     public int Fame { get; set; }
