@@ -31,11 +31,11 @@ public class DataManager : IManager
         domainInfo = new DomainInfo();
         eventData = new EventInfo();
 
-        //����
-        domainInfo.Modify(data => 
-        { 
-            data.DomainDataTable[0].Name = ""; 
-        });
+        //제이슨데이터 자체를 수정하는 방법. 사용할때 조심하길!
+        // domainInfo.Modify(data => 
+        // { 
+        //     data.DomainDataTable[0].Name = ""; 
+        // });
 
         Debug.Log(FindDataById(knightInfo.Data.KnightDataTable,1000).NameKr);
     }
