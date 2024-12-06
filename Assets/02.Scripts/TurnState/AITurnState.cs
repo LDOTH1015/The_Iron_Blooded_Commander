@@ -59,7 +59,7 @@ public class AITurnState : ITurnState
             // 가중치(이게 1.0을 넘어가면 침략결정 주사위굴림)
             float _weightFactor = 1.0f;
             // 결정팩터(이게 0.5를 넘어가면 침략함)
-            float _decisionFactor;
+            float? _decisionFactor = null;
             
             // 현재 가중치 비교로직은 미구현
             
@@ -73,6 +73,7 @@ public class AITurnState : ITurnState
                 {
                     LocatorManager.Instance.timeManager.AddEventToTimeline(4500);
                     LocatorManager.Instance.timeManager.AddEventToTimeline(4501);
+                    Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[i].Name}가 침략이벤트 리스트에 넣엇음");
                 }
             }
         }

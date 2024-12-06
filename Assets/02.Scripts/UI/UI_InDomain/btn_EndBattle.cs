@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class btn_EndBattle : UIBase
@@ -16,5 +17,6 @@ public class btn_EndBattle : UIBase
     private void OnButtonClicked()
     {
         LocatorManager.Instance.turnManager.battleTurnState.Execute();
+        SceneManager.LoadScene("Test_SOLS");
     }
 }

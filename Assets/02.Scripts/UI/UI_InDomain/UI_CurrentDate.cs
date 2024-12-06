@@ -15,6 +15,12 @@ public class UI_CurrentDate : UIBase
         base.Awake();
         currentDateText = GetComponent<TextMeshProUGUI>();
     }
+
+    private void Start()
+    {
+        currentDateText.text = "1년1월1일";
+    }
+
     private void Update()
     {
         currentDateText.text = $"{LocatorManager.Instance.timeManager.currentYear}년{LocatorManager.Instance.timeManager.currentMonth}월{LocatorManager.Instance.timeManager.currentDay}일";

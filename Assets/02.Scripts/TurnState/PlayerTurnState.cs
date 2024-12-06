@@ -8,6 +8,8 @@ public class PlayerTurnState : ITurnState
     // TimeManager로부터 받는 종료된 이벤트 리스트
     public List<EventDataTable> temptList = new List<EventDataTable>();
     public List<EventDataTable> completedEvents = new List<EventDataTable>();
+
+    public bool IsLoadingOn;
     
     
     // 이렇게 하면 문제가 있음
@@ -33,6 +35,7 @@ public class PlayerTurnState : ITurnState
         // -> 결과값도 이미 테이블안에 담겨져 있음. 이걸 어떻게 DomainDataTable에 넣는가가 문제임
         UpdateEventsResult();
         // 3. 타임매니저로부터 다음이벤트가 배틀이면 IsNextTurnBattle true업데이트해줘야함
+        IsLoadingOn = false;
     }
     
     
@@ -45,6 +48,8 @@ public class PlayerTurnState : ITurnState
     // 턴진행버튼은 Exit()랑 연결해야함
     public void Exit()
     {
+        IsLoadingOn = true;
+        UIManager.Instance.Show<pnl_Loading>();
         // Exit()실행 후 ai턴이나 배틀턴으로 턴 넘김
         if (!isNextTurnBattle)
         {
@@ -55,40 +60,37 @@ public class PlayerTurnState : ITurnState
         {
             LocatorManager.Instance.turnManager.TransitionTo(LocatorManager.Instance.turnManager.battleTurnState);
         }
-
     }
     
     private void UpdateEventsResult()
     {
         for (int i = 0; i < completedEvents.Count; i++)
         {
+            Debug.Log($"{completedEvents[i].Name} 결과 업데이트");
             // 훈련결과 업데이트
-            if (completedEvents[i].ResultType == "TrainingLevel")
+            if (completedEvents[i].ID == 4000)
             {
                 LocatorManager.Instance.dataManager.unitTypeInfo.Data.UnitTypeDataTable[0].TrainingLevel +=
                     (int)completedEvents[i].ResultValue;
                 UIManager.Instance.Show<UI_ResultsOfTrainUnits>();
                 completedEvents.RemoveAt(i);
-                break;
             }
-            
             // 공격받았을 때의 경고 업데이트.
-            if (completedEvents[i].ResultType == "WarnOfAttacked")
+            else if (completedEvents[i].ID == 4500)
             {
                 // 경고 유아이 팝업
                 UIManager.Instance.Show<UI_WarnOfAttacked>();
+                Debug.Log("UI떳냐? 안떴으면 버그난거임");
                 completedEvents.RemoveAt(i);
-                break;
             }
             // 실제로 영지에 쳐들어옴
-            if (completedEvents[i].ResultType == "UnderAttack")
+            else if (completedEvents[i].ID == 4501)
             {
                 isNextTurnBattle = true;
                 // TODO: 턴 진행 버튼이 전투개시버튼으로 바뀌어야함
                 // 해당 UI스크립트에는 Exit()실행시켜주면됨 짜피 EXIT에서 배틀씬으로 넘어갈건지 아닌지 구별하니까
+                Debug.Log("전투개시 떳냐? 안떴으면 버그난거임");
                 completedEvents.RemoveAt(i);
-                break;
-
             }
         }
     }

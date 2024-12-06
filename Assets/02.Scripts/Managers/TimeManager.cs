@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class TimeManager : IManager
 {
@@ -50,29 +51,45 @@ public class TimeManager : IManager
     // 플레이어가 이벤트 발생 시 스케쥴이벤트리스트에 등록및 예정종료일을 결정하는 메서드
     private void AddEventWithDueDate(int eventID)
     {
-        int _dueDate;
+        int? _dueDate = null;
         
         for (int i = 0; i < eventInfo.Data.EventDataTable.Count; i++)
         {
             // 이벤트ID를 기준으로 전체 이벤트 데이터테이블에서 인덱싱
             if (eventInfo.Data.EventDataTable[i].ID == eventID)
             {
-                // 예정된 이벤트 대기열에 eventID에 맞는 이벤트를 추가
-                scheduledEvents.Add(eventInfo.Data.EventDataTable[i]);
-                break;
-            }
-        } 
-        // 추가한 이벤트 스케쥴이벤트리스트에서 DueDate수정
-        for (int i = 0; i < scheduledEvents.Count; i++)
-        {
-            if (scheduledEvents[i].ID == eventID)
-            {
-                // 대기열의 이벤트중 prams로 받은 eventID와 일치하는 이벤트의 DueDate설정 후 값 수정
-                _dueDate = Random.Range(scheduledEvents[i].MinClearTime, scheduledEvents[i].MaxClearTime);
-                scheduledEvents[i].DueDate = _dueDate;
+                // // 예정된 이벤트 대기열에 eventID에 맞는 이벤트를 추가
+                // scheduledEvents.Add(eventInfo.Data.EventDataTable[i]);
+                // Debug.Log($"{scheduledEvents.Count}");
+                // // UI팝업용 DueDate설정
+                // _dueDate = Random.Range(eventInfo.Data.EventDataTable[i].MinClearTime, eventInfo.Data.EventDataTable[i].MaxClearTime);
+                // eventInfo.Data.EventDataTable[i].DueDate = _dueDate.Value;
+                // break;
+                
+                // 수정 구분선
+                
+                string jsonString = JsonConvert.SerializeObject(eventInfo.Data.EventDataTable[i]);
+                EventDataTable newEvent = JsonConvert.DeserializeObject<EventDataTable>(jsonString);
+                _dueDate = Random.Range(newEvent.MinClearTime, newEvent.MaxClearTime);
+                newEvent.DueDate = _dueDate.Value;
+                scheduledEvents.Add(newEvent);
                 break;
             }
         }
+
+        // // 추가한 이벤트 스케쥴이벤트리스트에서 DueDate수정
+        // if (_dueDate.HasValue)
+        // {
+        //     for (int i = 0; i < scheduledEvents.Count; i++)
+        //     {
+        //         if (scheduledEvents[i].ID == eventID)
+        //         {
+        //             scheduledEvents[i].DueDate = _dueDate.Value;
+        //             break;
+        //         }
+        //     }    
+        // }
+        
     }
     
     // 플레이어 턴 시작 시? 아님 종료 시? 날짜 변경 시 타임라인이벤트들의 남은기간들을 일제히 차감하는 메서드
@@ -83,22 +100,23 @@ public class TimeManager : IManager
         if (scheduledEvents.Count > 0)
         {
             // [0]번째 이벤트의 DueDate만큼 playerCurrentDate를 더해주기
-            playerCurrentDate += scheduledEvents[0].DueDate;
+            var elapsedTime = scheduledEvents[0].DueDate;
+            playerCurrentDate += elapsedTime;
+            Debug.Log($"지난 경과일 {elapsedTime}. 업데이트경과일{playerCurrentDate}");
             // 더한 날짜를 기준으로 년월일 정보 업데이트
             UpdateDateForUI(playerCurrentDate);
-            int _subtractStandard = scheduledEvents[0].DueDate;
-            for (int i = 0; i < scheduledEvents.Count; i++)
+            
+            for (int i = scheduledEvents.Count-1; i>=0 ; i--)
             {
                 // 스케쥴이벤트리스트의 [0]번째 이벤트의 DueDate만큼 해당리스트 모든 원소의 DueDate를 차감
-                scheduledEvents[i].DueDate -= _subtractStandard;
-            }
-            for (int i = 0; i < scheduledEvents.Count; i++)
-            {
+                scheduledEvents[i].DueDate -= elapsedTime;
+                
                 // DueDate가 ==0인 애들의 ID를 모두 PlayerState에 넘겨주기
                 // DueDate가 ==0인 이벤트들을 대기열 리스트에서 제거
-                if (scheduledEvents[i].DueDate == 0)
+                if (scheduledEvents[i].DueDate <= 0)
                 {
                     LocatorManager.Instance.turnManager.playerTurnState.temptList.Add(scheduledEvents[i]);
+                    Debug.Log($"{scheduledEvents[i].ID}이벤트 tempList로 전달");
                     scheduledEvents.RemoveAt(i);
                 }
             }
