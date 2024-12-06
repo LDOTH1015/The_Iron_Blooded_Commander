@@ -27,6 +27,9 @@ public class TimeManager : IManager
         // 불러오기여부확인 후 새게임일경우 0, 불러오기일 경우 플레이어데이터에서 캐싱해오기
         // 대기열 컬렉션의 경우에도 저장하기, 불러오기 생각해서 캐싱해올 방법 생각해두기
         playerCurrentDate = 0;
+        currentYear = 1;
+        currentMonth = 1;
+        currentDay = 1;
         scheduledEvents = new List<EventDataTable>();
         eventInfo = LocatorManager.Instance.dataManager.eventData;
     }

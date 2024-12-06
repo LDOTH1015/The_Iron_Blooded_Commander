@@ -9,7 +9,7 @@ public class pnl_Loading : UIBase
     
     private void Update()
     {
-        if (!LocatorManager.Instance.turnManager.playerTurnState.IsLoadingOn)
+        if (!LocatorManager.Instance.turnManager.playerTurnState.isLoadingOn)
             StartCoroutine(HideUI());
     }
 

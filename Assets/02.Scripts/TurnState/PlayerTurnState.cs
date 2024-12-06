@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerTurnState : ITurnState
 {
-    [HideInInspector]public bool isNextTurnBattle = false;
     // TimeManager로부터 받는 종료된 이벤트 리스트
     public List<EventDataTable> temptList = new List<EventDataTable>();
     public List<EventDataTable> completedEvents = new List<EventDataTable>();
 
-    public bool IsLoadingOn;
+    public bool isNextTurnBattle = false;
+    public bool isLoadingOn;
+    public bool isWarRumorEvent = false;
     
     
     // 이렇게 하면 문제가 있음
@@ -35,7 +36,9 @@ public class PlayerTurnState : ITurnState
         // -> 결과값도 이미 테이블안에 담겨져 있음. 이걸 어떻게 DomainDataTable에 넣는가가 문제임
         UpdateEventsResult();
         // 3. 타임매니저로부터 다음이벤트가 배틀이면 IsNextTurnBattle true업데이트해줘야함
-        IsLoadingOn = false;
+        
+        // 로딩창 끄게하는 boo변수(로딩창 스크립트에서 변수를 확인하고 끔)
+        isLoadingOn = false;
     }
     
     
@@ -48,12 +51,13 @@ public class PlayerTurnState : ITurnState
     // 턴진행버튼은 Exit()랑 연결해야함
     public void Exit()
     {
-        IsLoadingOn = true;
-        UIManager.Instance.Show<pnl_Loading>();
+        isLoadingOn = true;
         // Exit()실행 후 ai턴이나 배틀턴으로 턴 넘김
         if (!isNextTurnBattle)
         {
+            UIManager.Instance.Show<pnl_Loading>();
             LocatorManager.Instance.turnManager.TransitionTo(LocatorManager.Instance.turnManager.aiTurnState);
+            
         }
         // IsNextTurnBattle == true일때,
         else
@@ -78,6 +82,8 @@ public class PlayerTurnState : ITurnState
             // 공격받았을 때의 경고 업데이트.
             else if (completedEvents[i].ID == 4500)
             {
+                // 소문이벤트인지 분기점을 잡는 bool변수
+                isWarRumorEvent = true;
                 // 경고 유아이 팝업
                 UIManager.Instance.Show<UI_WarnOfAttacked>();
                 Debug.Log("UI떳냐? 안떴으면 버그난거임");

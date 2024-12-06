@@ -19,7 +19,14 @@ public class AITurnState : ITurnState
     // 직전에 플레이어를 침공했다면 침략여부결정 때 확률을 확 낮출 수 있는 변수 필요
     public void Execute()
     {
-        ConsiderToAttackPlayer();
+        if (!LocatorManager.Instance.turnManager.playerTurnState.isWarRumorEvent)
+        {
+            ConsiderToAttackPlayer();
+        }
+        else
+        {
+            LocatorManager.Instance.turnManager.playerTurnState.isWarRumorEvent = false;
+        }
         Exit();
     }
     
@@ -30,6 +37,7 @@ public class AITurnState : ITurnState
         LocatorManager.Instance.turnManager.TransitionTo(LocatorManager.Instance.turnManager.worldTurnState);
     }
     
+    // TODO: 턴사이사이 날짜를 고려해서 업데이트가 이뤄져야함.
     private void AIDomainStateUpdate()
     {
         for (int i = 1; i < LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable.Count; i++)
