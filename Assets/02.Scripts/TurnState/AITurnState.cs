@@ -8,6 +8,7 @@ public class AITurnState : ITurnState
     // 1. AI재화상태 업데이트
     public void Enter()
     {
+        // 재화상태 업데이트도 예정일기준으로 업데이트를 하게끔 수정해야함.
         AIDomainStateUpdate();
         // 디버그는 ai영지상태 업데이트 체크용
         Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[1].Gold}");
@@ -61,6 +62,7 @@ public class AITurnState : ITurnState
         // 6. 가중치가 1을 넘으면 주사위굴리기 → Random.Range(0.4, 1) 돌려서 값이 0.5를 넘어가면 침략결정!
         // 7. 영주의 전쟁민감도→아주 좋은 아이디어
         // 8. 침략이 결정이 되면 이벤트 두개 연속등록(경고이벤트와 실제침공이벤트)
+        // 9. Player를 공격할 병력을 설정하는 메서드,로직이 필요.
 
         for (int i = 1; i < LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable.Count; i++)
         {
