@@ -25,18 +25,11 @@ public class DataManager : IManager
     public void Initialize()
     {
         // TODO: 저장된 데이터 불러오기랑 새게임 시 새로운 플레이어데이터만들기. 두 가지 경우가 있기때문에 조건식달아야함
-        domainInfo = new DomainInfo();
-<<<<<<< Updated upstream
-        eventData = new EventInfo();
-
         //제이슨데이터 자체를 수정하는 방법. 사용할때 조심하길!
         // domainInfo.Modify(data => 
         // { 
         //     data.DomainDataTable[0].Name = ""; 
         // });
-
-        Debug.Log(FindDataById(knightInfo.Data.KnightDataTable,1000).NameKr);
-=======
         eventInfo = new EventInfo();
         eventResultInfo = new EventResultInfo();
         knightInfo = new KnightInfo();
@@ -51,7 +44,6 @@ public class DataManager : IManager
         userInfo = new UserInfo();
         userKnightInfo = new UserKnightInfo();
         userUnitTypeInfo = new UserUnitTypeInfo();
->>>>>>> Stashed changes
     }
 
     public T FindDataById<T>(List<T> dataList, string id) where T : IData

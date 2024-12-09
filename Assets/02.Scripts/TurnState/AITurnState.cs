@@ -10,9 +10,9 @@ public class AITurnState : ITurnState
     {
         AIDomainStateUpdate();
         // 디버그는 ai영지상태 업데이트 체크용
-        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[1].Gold}");
-        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[2].Gold}");
-        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[3].Gold}");
+        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.Domain[1].Gold}");
+        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.Domain[2].Gold}");
+        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.Domain[3].Gold}");
     }
     
     // AI상태와 플레이어 상태 비교 후 침략여부 결정 -> 결정 후 타임매니저 이벤트타임라인에 추가
@@ -31,14 +31,14 @@ public class AITurnState : ITurnState
     private void AIDomainStateUpdate()
     {
         DomainArray _aiDomainTable = LocatorManager.Instance.dataManager.domainInfo.Data;
-        for (int i = 1; i < _aiDomainTable.DomainDataTable.Count; i++)
+        for (int i = 1; i < _aiDomainTable.Domain.Count; i++)
         {
             // 식량
-            _aiDomainTable.DomainDataTable[i].Food += Random.Range(-100, 100);
-            _aiDomainTable.DomainDataTable[i].Gold += Random.Range(-100, 100);
-            _aiDomainTable.DomainDataTable[i].Population += Random.Range(-50, 50);
-            _aiDomainTable.DomainDataTable[i].Steel += Random.Range(-50, 50);
-            _aiDomainTable.DomainDataTable[i].Fame += Random.Range(-10, 10);
+            _aiDomainTable.Domain[i].Food += Random.Range(-100, 100);
+            _aiDomainTable.Domain[i].Gold += Random.Range(-100, 100);
+            _aiDomainTable.Domain[i].Population += Random.Range(-50, 50);
+            _aiDomainTable.Domain[i].Steel += Random.Range(-50, 50);
+            _aiDomainTable.Domain[i].Fame += Random.Range(-10, 10);
         }
     }
     

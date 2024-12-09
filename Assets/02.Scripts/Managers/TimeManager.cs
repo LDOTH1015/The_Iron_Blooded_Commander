@@ -27,11 +27,11 @@ public class TimeManager : IManager
         // 대기열 컬렉션의 경우에도 저장하기, 불러오기 생각해서 캐싱해올 방법 생각해두기
         playerCurrentDate = 0;
         scheduledEvents = new List<Event>();
-        eventInfo = LocatorManager.Instance.dataManager.eventData;
+        eventInfo = LocatorManager.Instance.dataManager.eventInfo;
     }
 
     // scheduledEvent에 이벤트를 등록하는 모든행위에 반드시 수반되어야 하는 메서드
-    public void AddEventToTimeline(int eventID)
+    public void AddEventToTimeline(string eventID)
     {
         // TODO: 타임라인 리스트?딕셔너리?에 이벤트발생 시 해당이벤트 넣어주는 로직. param을 뭐로 설정할지 헷갈림
         // TODO: DueDate랑 같이 해당 이벤트 대기열 컬렉션에 삽입해줘야댐
@@ -48,17 +48,17 @@ public class TimeManager : IManager
     }
     
     // 플레이어가 이벤트 발생 시 스케쥴이벤트리스트에 등록및 예정종료일을 결정하는 메서드
-    private void AddEventWithDueDate(int eventID)
+    private void AddEventWithDueDate(string eventID)
     {
         int _dueDate;
         
-        for (int i = 0; i < eventInfo.Data.EventDataTable.Count; i++)
+        for (int i = 0; i < eventInfo.Data.Event.Count; i++)
         {
             // 이벤트ID를 기준으로 전체 이벤트 데이터테이블에서 인덱싱
-            if (eventInfo.Data.EventDataTable[i].ID == eventID)
+            if (eventInfo.Data.Event[i].ID == eventID)
             {
                 // 예정된 이벤트 대기열에 eventID에 맞는 이벤트를 추가
-                scheduledEvents.Add(eventInfo.Data.EventDataTable[i]);
+                scheduledEvents.Add(eventInfo.Data.Event[i]);
                 break;
             }
         } 

@@ -49,7 +49,7 @@ public class PlayerTurnState : ITurnState
             // 훈련결과 업데이트
             if (completedEvents[i].ResultType == "TrainingLevel")
             {
-                LocatorManager.Instance.dataManager.unitTypeInfo.Data.UnitTypeDataTable[0].TrainingLevel +=
+                LocatorManager.Instance.dataManager.unitTypeInfo.Data.UnitType[0].TrainingLevel +=
                     (int)completedEvents[i].ResultValue;
             }
             
