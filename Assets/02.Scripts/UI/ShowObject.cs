@@ -4,6 +4,6 @@ public class ShowObject : MonoBehaviour
 {
     private void Start()
     {
-        UIManager.Instance.Show<TestButton>();
+        // UIManager.Instance.Show<TestButton>();
     }
 }
