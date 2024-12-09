@@ -7,6 +7,7 @@ using UnityEngine;
 public class TempDomainData : MonoBehaviour
 {
     public DomainArray domainArray;
+    public LordDataArray lordDataArray;
     public KnightDataArray knightDataArray;
     public UnitTypeDataArray unitTypeDataArray;
     public StrategyDataArray strategyDataArray;
@@ -22,6 +23,7 @@ public class TempDomainData : MonoBehaviour
     public void SetTempData()
     {
         domainArray = JsonConvert.DeserializeObject<DomainArray>(LoadData("DomainDataTable"));
+        lordDataArray = JsonConvert.DeserializeObject<LordDataArray>(LoadData("LordDataTable"));
         knightDataArray = JsonConvert.DeserializeObject<KnightDataArray>(LoadData("KnightDataTable"));
         unitTypeDataArray = JsonConvert.DeserializeObject<UnitTypeDataArray>(LoadData("UnitTypeDataTable"));
         strategyDataArray = JsonConvert.DeserializeObject<StrategyDataArray>(LoadData("StrategyDataTable"));

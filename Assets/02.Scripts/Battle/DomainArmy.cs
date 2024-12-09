@@ -7,11 +7,13 @@ using UnityEngine;
 public class DomainArmy : MonoBehaviour
 {
     // 전략 세팅 시스템
-    StrategySettingSystem strategySettingSystem = new StrategySettingSystem();
+    StrategySettingSystem strategySettingSystem;
 
     TempDomainData tempDomainData;//임시로 영지 데이터 가져오기
 
     // 군 정보 리스트
+    // 영주
+    Lord domainLord;
     // 기사리스트
     List<Knight> knightList = new List<Knight>();
     // 병종리스트
@@ -21,6 +23,11 @@ public class DomainArmy : MonoBehaviour
     // 부대임무리스트
     List<UnitDivisionRoleDataTable> unitDivisionRoleDataList = new List<UnitDivisionRoleDataTable>();
 
+    public Lord DomainLord
+    {
+        get { return domainLord; }
+        private set { domainLord = value; }
+    }
     public List<Knight> KnightList
     {
         get { return knightList; }
@@ -42,7 +49,14 @@ public class DomainArmy : MonoBehaviour
     }
     private void Awake()
     {
-
+        if (TryGetComponent<StrategySettingSystem>(out strategySettingSystem))
+        {
+            Debug.Log($"{typeof(StrategySettingSystem)} 로드 성공!");
+        }
+        else
+        {
+            Debug.LogError($"{typeof(StrategySettingSystem)} 로드 실패!");
+        }
     }
     private void Start()
     {
@@ -53,17 +67,32 @@ public class DomainArmy : MonoBehaviour
         }
         else
         {
-            Debug.LogError("데이터 로드 실패!");
+            Debug.LogError($"{typeof(TempDomainData)} 데이터 로드 실패!");
         }
         LogDomainArmyData();
     }
 
     public void TempSetData()
     {
+        TempSetDomainLordData();
         TempSetKnightList();
         TempSetUnitTypeList();
         TempSetStrategyList();
         TempSetUnitDivisionRoleDataList();
+        TempSetStrategySettingSystemData();
+    }
+    public void TempSetDomainLordData()
+    {
+        if (tempDomainData.lordDataArray == null || tempDomainData.lordDataArray.LordDataTable == null)
+        {
+            Debug.LogError("lordDataArray or LordDataTable is null!");
+            return;
+        }
+        LordDataTable lordDataTable = tempDomainData.lordDataArray.LordDataTable[0];// 현재 첫 번째 원소가 플레이어로 지정
+        GameObject lordObj = new GameObject($"Lord_{lordDataTable.ID}");
+        lordObj.transform.SetParent(transform);
+        DomainLord = lordObj.AddComponent<Lord>();
+        DomainLord.SetLordData(lordDataTable);
     }
     public void TempSetKnightList()
     {
@@ -76,6 +105,7 @@ public class DomainArmy : MonoBehaviour
         for (int i = 0; i < KnightDataTable.Count; i++)
         {
             GameObject knightObj = new GameObject($"Knight_{KnightDataTable[i].ID}");
+            knightObj.transform.SetParent(transform);
             Knight knight = knightObj.AddComponent<Knight>();
             knight.SetKnightData(KnightDataTable[i]);
             knightList.Add(knight);
@@ -93,6 +123,7 @@ public class DomainArmy : MonoBehaviour
         for (int i = 0; i < unitTypeDataTable.Count; i++)
         {
             GameObject unitTypeObj = new GameObject($"UnitType_{unitTypeDataTable[i].ID}");
+            unitTypeObj.transform.SetParent(transform);
             UnitType unitType = unitTypeObj.AddComponent<UnitType>();
             unitType.SetUnitTypeData(unitTypeDataTable[i]);
             unitTypeList.Add(unitType);
@@ -109,6 +140,7 @@ public class DomainArmy : MonoBehaviour
         for (int i = 0; i < strategyDataTable.Count; i++)
         {
             GameObject strategyObj = new GameObject($"Strategy_{strategyDataTable[i].ID}");
+            strategyObj.transform.SetParent(transform);
             Strategy strategy = strategyObj.AddComponent<Strategy>();
             strategy.SetStrategyData(strategyDataTable[i]);
             strategyList.Add(strategy);
@@ -125,19 +157,33 @@ public class DomainArmy : MonoBehaviour
         for (int i = 0; i < unitDivisionRoleDataTable.Count; i++)
         {
             GameObject roleObj = new GameObject($"UnitDivisionRole_{unitDivisionRoleDataTable[i].ID}");
+            roleObj.transform.SetParent(transform);
             UnitDivisionRoleDataTable roleData = unitDivisionRoleDataTable[i];
             unitDivisionRoleDataList.Add(roleData);
         }
     }
-
+    public void TempSetStrategySettingSystemData()
+    {
+        strategySettingSystem.SetStrategySettingSystemData();
+    }
+    
     public void LogDomainArmyData()
     {
+        LogDomainLordData();
         LogKnightData();
         LogUnitTypeData();
         LogStrategyData();
         LogUnitDivisionRoleData();
+        LogStrategySettingSystemData();
     }
-
+    public void LogDomainLordData()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("로드: ");
+        sb.Append(DomainLord.LordData.NameKr);
+        sb.Append("\n");
+        Debug.Log(sb);
+    }
     public void LogKnightData()
     {
         StringBuilder sb = new StringBuilder();
@@ -186,130 +232,9 @@ public class DomainArmy : MonoBehaviour
         sb.Append("\n");
         Debug.Log(sb);
     }
-
-}
-// 전략 설정 시스템
-public class StrategySettingSystem : MonoBehaviour
-{
-    DomainArmy domainArmy;
-    // 전략리스트 
-    List<Strategy> strategyList;
-    // 부대임무리스트
-    List<UnitDivisionRoleDataTable> unitDivisionRoleDataList;
-
-    Strategy currentStrategy;
-
-    private void Start()
+    public void LogStrategySettingSystemData()
     {
-        strategyList = domainArmy.StrategyList;
-        unitDivisionRoleDataList = domainArmy.UnitDivisionRoleDataList;
-    }
-    // UI의 반응과 연계하여 전략 설정 및 저장
-}
-// 기사
-public class Knight : MonoBehaviour
-{
-    // 기사 정보
-    KnightDataTable knightData;
-
-    public KnightDataTable KnightData
-    {
-        get { return knightData; }
-        private set { knightData = value; }
+        strategySettingSystem.LogStrategySettingSystemData();
     }
 
-    public void SetKnightData(KnightDataTable inputKnightData)
-    {
-        knightData = inputKnightData;
-    }
-}
-// 병종
-public class UnitType : MonoBehaviour
-{
-    // 병종 정보
-    UnitTypeDataTable unitTypeData;
-
-    public UnitTypeDataTable UnitTypeData
-    {
-        get { return unitTypeData; }
-        private set { unitTypeData = value; }
-    }
-    public void SetUnitTypeData(UnitTypeDataTable inputUnitTypeData)
-    {
-        unitTypeData = inputUnitTypeData;
-    }
-}
-// 전략
-public class Strategy : MonoBehaviour
-{
-    // 전략 정보
-    StrategyDataTable strategyData;
-
-    public StrategyDataTable StrategyData
-    {
-        get { return strategyData; }
-        private set { strategyData = value; }
-    }
-
-    public void SetStrategyData(StrategyDataTable inputStrategyData)
-    {
-        strategyData = inputStrategyData;
-    }
-}
-// 부대
-public class UnitDivision : MonoBehaviour
-{
-    // 부대 정보
-    UnitDivisionDataTable unitDivisionData;
-
-    public UnitDivisionDataTable UnitDivisionData
-    {
-        get { return unitDivisionData; }
-        private set { unitDivisionData = value; }
-    }
-
-    public void SetUnitDivisionData(UnitDivisionDataTable inputUnitDivisionData)
-    {
-        unitDivisionData = inputUnitDivisionData;
-    }
-}
-// 부대 배치
-public class UnitDivisionPosition : MonoBehaviour
-{
-    // 부대배치정보 - 부대(UnitDivision), 위치(Position), 회전(Rotation)
-    UnitDivisionPositionDataTable unitDivisionPositionData;
-
-    public UnitDivisionPositionDataTable UnitDivisionPositionData
-    {
-        get { return unitDivisionPositionData; }
-        private set { unitDivisionPositionData = value; }
-    }
-
-    public void SetUnitDivisionPositionData(UnitDivisionPositionDataTable inputUnitDivisionPositionData)
-    {
-        unitDivisionPositionData = inputUnitDivisionPositionData;
-    }
-
-    //UnitDivision unitDivision;
-    //Vector3 position;
-    //Vector3 rotation;
-    // 부대의 병종과 수, 위치, 방향에 맞게 병사와 기사를 필드에 생성해주는 로직
-}
-
-// 병사
-public class Soldier : MonoBehaviour
-{
-    // 부대의 UnitType의 데이터를 참조해서, 병사들이 전투중에 행동하는 로직에 사용
-    UnitDivisionDataTable unitDivisionData;
-
-    public UnitDivisionDataTable UnitDivisionData
-    {
-        get { return unitDivisionData; }
-        private set { unitDivisionData = value; }
-    }
-    
-    public void SetSoldierData(UnitDivisionDataTable inputUnitDivisionData)
-    {
-        unitDivisionData = inputUnitDivisionData;
-    }
 }

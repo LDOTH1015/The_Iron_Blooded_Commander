@@ -11,6 +11,13 @@ public class UI_MapInspection : MonoBehaviour
 
     [SerializeField] private GameObject uiPopupBattleStart;
 
+    Camera cameraStrategySettingCamera;
+
+    private void Start()
+    {
+        cameraStrategySettingCamera = strategySettingCamera.GetComponent<Camera>();
+    }
+
     public void OnClickBattleStart()
     {
         uiPopupBattleStart.SetActive(true);
@@ -23,6 +30,7 @@ public class UI_MapInspection : MonoBehaviour
         mapInspectionCamera.SetActive(false);
         uiStrategySetting.SetActive(true);
         uiMapInspection.SetActive(false);
+        DragAndDropManager.Instance.SetWorldDragCamera(cameraStrategySettingCamera);
     }
 
 }
