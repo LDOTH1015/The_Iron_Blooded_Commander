@@ -14,23 +14,29 @@ public class DomainArmy : MonoBehaviour
 
 }
 // 기사
-public class Knight : MonoBehaviour
+/*
+public class KnightDefault : MonoBehaviour
 {
     // KnightDataTable 기사 정보
 
 }
+*/
 // 병종
+/*
 public class UnitType : MonoBehaviour
 {
     // UnitTypeDataTable 병종 정보
 
 }
+*/
 // 전략
+/*
 public class Strategy : MonoBehaviour
 {
     // 전략 데이터 테이블
 
 }
+*/
 // 전략 설정 시스템
 public class StrategySettingSystem : MonoBehaviour
 {
@@ -40,18 +46,22 @@ public class StrategySettingSystem : MonoBehaviour
     // UI의 반응과 연계하여 전략 설정 및 저장
 }
 // 부대
+/*
 public class UnitDivision : MonoBehaviour
 {
     // UnitDivisionDataTable 부대 정보
     // UnitDivisionRoleDataTable 부대 임무 정보
 }
+*/
 // 부대 배치
+/*
 public class UnitDivisionPosition : MonoBehaviour
 {
     // 부대 배치 데이터 테이블 - 부대(UnitDivision), 위치(Position), 회전(Rotation)
 
     // 부대의 병종과 수, 위치, 방향에 맞게 병사와 기사를 필드에 생성해주는 로직
 }
+*/
 // 병사
 public class Soldier : MonoBehaviour
 {

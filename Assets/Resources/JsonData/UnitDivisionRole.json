@@ -1,0 +1,44 @@
+﻿{
+  "UnitDivisionRole": [
+    {
+      "ID": 2200,
+      "UnitDivisionID": "2200",
+      "Name": "부대 임무 이름 1",
+      "Description": "더미데이터",
+      "RoleID": "Maintainline",
+      "Condition": 30
+    },
+    {
+      "ID": 2201,
+      "UnitDivisionID": "2201",
+      "Name": "부대 임무 이름 2",
+      "Description": "더미데이터",
+      "RoleID": "Rush",
+      "Condition": 20
+    },
+    {
+      "ID": 2202,
+      "UnitDivisionID": "2202",
+      "Name": "부대 임무 이름 3",
+      "Description": "더미데이터",
+      "RoleID": "ReserveUnit",
+      "Condition": 25
+    },
+    {
+      "ID": 2203,
+      "UnitDivisionID": "2203",
+      "Name": "부대 임무 이름 4",
+      "Description": "더미데이터",
+      "RoleID": "Maintainline",
+      "Condition": 34
+    },
+    {
+      "ID": 2204,
+      "UnitDivisionID": "2204",
+      "Name": "부대 임무 이름 5",
+      "Description": "더미데이터",
+      "RoleID": "Rush",
+      "Condition": 20
+    }
+  ]
+}

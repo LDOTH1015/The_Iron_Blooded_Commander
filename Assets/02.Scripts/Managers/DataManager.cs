@@ -3,32 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 public interface IData
 {
-    int ID { get; }
+    string ID { get; }
 }
 public class DataManager : IManager
 {
-    public KnightInfo knightInfo;
-    public UnitTypeInfo unitTypeInfo;
-    public StrategyInfo strategyInfo;
-    public RewardInfo rewardInfo;
-    public UnitDivisionPositionInfo unitDivisionPositionInfo;
-    public UnitDivisionInfo unitDivisionnfo;
-    public UnitDivisionRoleInfo unitDivisionrole;
     public DomainInfo domainInfo;
-    public EventInfo eventData;
-
+    public EventInfo eventInfo;
+    public EventResultInfo eventResultInfo;
+    public KnightInfo knightInfo;
+    public LordInfo lordInfo;
+    public RewardInfo rewardInfo;
+    public StageInfo stageInfo;
+    public StrategyInfo strategyInfo;
+    public UnitDivisionInfo unitDivisionnfo;
+    public UnitDivisionPositionInfo unitDivisionPositionInfo;
+    public UnitDivisionRoleInfo unitDivisionrole;
+    public UnitTypeInfo unitTypeInfo;
+    public UserInfo userInfo;
+    public UserKnightInfo userKnightInfo;
+    public UserUnitTypeInfo userUnitTypeInfo;
     public void Initialize()
     {
         // TODO: 저장된 데이터 불러오기랑 새게임 시 새로운 플레이어데이터만들기. 두 가지 경우가 있기때문에 조건식달아야함
-
-        knightInfo = new KnightInfo();
-        unitTypeInfo = new UnitTypeInfo();
-        strategyInfo = new StrategyInfo();
-        rewardInfo = new RewardInfo();
-        unitDivisionPositionInfo = new UnitDivisionPositionInfo();
-        unitDivisionnfo = new UnitDivisionInfo();
-        unitDivisionrole = new UnitDivisionRoleInfo();
         domainInfo = new DomainInfo();
+<<<<<<< Updated upstream
         eventData = new EventInfo();
 
         //제이슨데이터 자체를 수정하는 방법. 사용할때 조심하길!
@@ -38,9 +36,25 @@ public class DataManager : IManager
         // });
 
         Debug.Log(FindDataById(knightInfo.Data.KnightDataTable,1000).NameKr);
+=======
+        eventInfo = new EventInfo();
+        eventResultInfo = new EventResultInfo();
+        knightInfo = new KnightInfo();
+        lordInfo = new LordInfo();
+        rewardInfo = new RewardInfo();
+        stageInfo = new StageInfo();
+        strategyInfo = new StrategyInfo();
+        unitDivisionnfo = new UnitDivisionInfo();
+        unitDivisionPositionInfo = new UnitDivisionPositionInfo();
+        unitDivisionrole = new UnitDivisionRoleInfo();
+        unitTypeInfo = new UnitTypeInfo();
+        userInfo = new UserInfo();
+        userKnightInfo = new UserKnightInfo();
+        userUnitTypeInfo = new UserUnitTypeInfo();
+>>>>>>> Stashed changes
     }
 
-    public T FindDataById<T>(List<T> dataList, int id) where T : IData
+    public T FindDataById<T>(List<T> dataList, string id) where T : IData
     {
         foreach (T data in dataList)
         {

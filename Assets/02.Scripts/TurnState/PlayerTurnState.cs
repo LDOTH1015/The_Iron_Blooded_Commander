@@ -6,7 +6,7 @@ public class PlayerTurnState : ITurnState
 {
     private bool isNextTurnBattle = false;
     // TimeManager로부터 받는 종료된 이벤트 리스트
-    public List<EventDataTable> completedEvents = new List<EventDataTable>();
+    public List<Event> completedEvents = new List<Event>();
     
     
     public void Enter()

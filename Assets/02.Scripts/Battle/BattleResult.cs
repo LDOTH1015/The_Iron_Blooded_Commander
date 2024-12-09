@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BattleResult : MonoBehaviour
 {
-    // ¹èÆ² °á°ú È­¸é Ãâ·Â
+    // ï¿½ï¿½Æ² ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½
     public GameObject enemyResultPrefab;
     public Transform enemyContentParent;
     public GameObject rewordResultPrefab;
@@ -13,7 +13,7 @@ public class BattleResult : MonoBehaviour
 
     private List<GameObject> activeUIObjects = new List<GameObject>();
 
-    //for¹®À» »ç¿ëÇÏ¿© ¸ó½ºÅÍ µ¥ÀÌÅÍ¿Í º¸»ó µ¥ÀÌÅÍ¸¦ ¹Ì¸® È­¸é¿¡ »ý¼º
+    //forï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ì¸ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½
     public void CreateUI(List<EnemyData> enemyDatas)
     {
         ClearUI();
@@ -23,34 +23,35 @@ public class BattleResult : MonoBehaviour
             activeUIObjects.Add(resultItem);
             Image iconImage = resultItem.transform.Find("Icon").GetComponent<Image>();
             Text nameText = resultItem.transform.Find("Name").GetComponent<Text>();
-            //¾ÆÀÌÄÜ ÀÌ¹ÌÁö º¯°æ ÄÚµå
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
             nameText.text = monsterData.Name + " * " + monsterData.Num;
         }
     }
 
-    //¸ó½ºÅÍ µ¥ÀÌÅÍ¿Í µ¿ÀÏÇÏ°Ô for ¹®À» ÅëÇÏ¿© µ¥ÀÌÅÍ¸¦ È­¸é¿¡ ¶ç¿ì¸ç Domainµ¥ÀÌÅÍ¿¡ º¸»ó °ª Ãß°¡
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ for ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ Domainï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½
     public void ShowReword(int StageID)
     {
         ClearUI();
 
-
+        /*
         foreach (var rewardData in LocatorManager.Instance.dataManager.rewardInfo.Data.KnightDataTable)
         {
             GameObject resultItem = Instantiate(rewordResultPrefab, rewordContentParent);
-            activeUIObjects.Add(resultItem); // »ý¼ºµÈ ¿ÀºêÁ§Æ®¸¦ ¸®½ºÆ®¿¡ Ãß°¡
+            activeUIObjects.Add(resultItem); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½
 
-            // UI ¿ä¼Ò ¼³Á¤
+            // UI ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Image iconImage = resultItem.transform.Find("Icon").GetComponent<Image>();
             Text nameText = resultItem.transform.Find("Name").GetComponent<Text>();
 
             nameText.text = rewardData.ItemType + " x " + rewardData.RewardNum;
         }
+        */
     }
 
     public void ShowMain()
     {
         ClearUI();
-        //¸ÞÀÎ¾ÀÀ¸·Î °¡´Â ÄÚµå
+        //ï¿½ï¿½ï¿½Î¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
     }
 
     private void ClearUI()
