@@ -9391,6 +9391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2084802057}
   - component: {fileID: 2084802056}
+  - component: {fileID: 2084802058}
   m_Layer: 0
   m_Name: DomainArmy
   m_TagString: Untagged
@@ -9425,6 +9426,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084802058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084802055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ba9055988643e40a0268b9022cef75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  domainArray:
+    DomainDataTable: []
 --- !u!1 &2092867291
 GameObject:
   m_ObjectHideFlags: 0

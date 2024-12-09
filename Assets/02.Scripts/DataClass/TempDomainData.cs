@@ -15,15 +15,12 @@ public class TempDomainData : MonoBehaviour
     public UnitDivisionRoleDataArray unitDivisionRoleDataArray;
 
     string dataPath = "JsonData/";
-
     private void Awake()
     {
         SetTempData();
     }
-
     public void SetTempData()
     {
-
         domainArray = JsonConvert.DeserializeObject<DomainArray>(LoadData("DomainDataTable"));
         knightDataArray = JsonConvert.DeserializeObject<KnightDataArray>(LoadData("KnightDataTable"));
         unitTypeDataArray = JsonConvert.DeserializeObject<UnitTypeDataArray>(LoadData("UnitTypeDataTable"));
@@ -32,7 +29,6 @@ public class TempDomainData : MonoBehaviour
         unitDivisionDataArray = JsonConvert.DeserializeObject<UnitDivisionDataArray>(LoadData("UnitDivisionDataTable"));
         unitDivisionRoleDataArray = JsonConvert.DeserializeObject<UnitDivisionRoleDataArray>(LoadData("UnitDivisionRoleDataTable"));
     }
-
     public string LoadData(string fileName)
     {
         string loadDataPath = Path.Combine(dataPath, fileName);
