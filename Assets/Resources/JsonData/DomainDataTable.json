@@ -3,14 +3,35 @@
     {
       "ID": 2200,
       "Name": "영지",
-<<<<<<< Updated upstream
-      "LordID": "5000",
-=======
       "LordID": 5000,
-      "KnightID": 0,
-      "UnitDivisionID": 0,
-      "StrategyID": 0,
->>>>>>> Stashed changes
+      "KnightID": [
+        1000,
+        1001,
+        1002,
+        1003,
+        1004
+      ],
+      "UnitTypeID": [
+        2000,
+        2001,
+        2002,
+        2003,
+        2004
+      ],
+      "StrategyID": [
+        2100,
+        2101,
+        2102,
+        2103,
+        2104
+      ],
+      "UnitDivisionRoleID": [
+        2200,
+        2201,
+        2202,
+        2203,
+        2204
+      ],
       "Population": 1,
       "PublicOpinion": 1,
       "Fame": 1,
@@ -27,14 +48,35 @@
     {
       "ID": 2201,
       "Name": "ai1",
-<<<<<<< Updated upstream
-      "LordID": "5001",
-=======
       "LordID": 5001,
-      "KnightID": 0,
-      "UnitDivisionID": 0,
-      "StrategyID": 0,
->>>>>>> Stashed changes
+      "KnightID": [
+        1000,
+        1001,
+        1002,
+        1003,
+        1004
+      ],
+      "UnitTypeID": [
+        2000,
+        2001,
+        2002,
+        2003,
+        2004
+      ],
+      "StrategyID": [
+        2100,
+        2101,
+        2102,
+        2103,
+        2104
+      ],
+      "UnitDivisionRoleID": [
+        2200,
+        2201,
+        2202,
+        2203,
+        2204
+      ],
       "Population": 1,
       "PublicOpinion": 1,
       "Fame": 1,
@@ -51,14 +93,35 @@
     {
       "ID": 2202,
       "Name": "ai2",
-<<<<<<< Updated upstream
-      "LordID": "5002",
-=======
       "LordID": 5002,
-      "KnightID": 0,
-      "UnitDivisionID": 0,
-      "StrategyID": 0,
->>>>>>> Stashed changes
+      "KnightID": [
+        1000,
+        1001,
+        1002,
+        1003,
+        1004
+      ],
+      "UnitTypeID": [
+        2000,
+        2001,
+        2002,
+        2003,
+        2004
+      ],
+      "StrategyID": [
+        2100,
+        2101,
+        2102,
+        2103,
+        2104
+      ],
+      "UnitDivisionRoleID": [
+        2200,
+        2201,
+        2202,
+        2203,
+        2204
+      ],
       "Population": 1,
       "PublicOpinion": 1,
       "Fame": 1,
@@ -75,14 +138,35 @@
     {
       "ID": 2203,
       "Name": "ai3",
-<<<<<<< Updated upstream
-      "LordID": "5003",
-=======
       "LordID": 5003,
-      "KnightID": 0,
-      "UnitDivisionID": 0,
-      "StrategyID": 0,
->>>>>>> Stashed changes
+      "KnightID": [
+        1000,
+        1001,
+        1002,
+        1003,
+        1004
+      ],
+      "UnitTypeID": [
+        2000,
+        2001,
+        2002,
+        2003,
+        2004
+      ],
+      "StrategyID": [
+        2100,
+        2101,
+        2102,
+        2103,
+        2104
+      ],
+      "UnitDivisionRoleID": [
+        2200,
+        2201,
+        2202,
+        2203,
+        2204
+      ],
       "Population": 1,
       "PublicOpinion": 1,
       "Fame": 1,
@@ -95,6 +179,27 @@
       "FarmlandLevel": 1,
       "RampartLevel": 1,
       "Tariff": 0.8
+    },
+    {
+      "ID": 0,
+      "Name": "",
+      "LordID": 0,
+      "KnightID": [],
+      "UnitTypeID": [],
+      "StrategyID": [],
+      "UnitDivisionRoleID": [],
+      "Population": 0,
+      "PublicOpinion": 0,
+      "Fame": 0,
+      "Gold": 0,
+      "Steel": 0,
+      "Food": 0,
+      "Captivity": 0,
+      "MarketLevel": 0,
+      "MineLevel": 0,
+      "FarmlandLevel": 0,
+      "RampartLevel": 0,
+      "Tariff": 0.0
     }
   ]
 }

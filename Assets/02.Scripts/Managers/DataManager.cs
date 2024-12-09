@@ -10,6 +10,7 @@ public class DataManager : IManager
     public KnightInfo knightInfo;
     public UnitTypeInfo unitTypeInfo;
     public StrategyInfo strategyInfo;
+    public RewardInfo rewardInfo;
     public UnitDivisionPositionInfo unitDivisionPositionInfo;
     public UnitDivisionInfo unitDivisionnfo;
     public UnitDivisionRoleInfo unitDivisionrole;
@@ -23,6 +24,7 @@ public class DataManager : IManager
         knightInfo = new KnightInfo();
         unitTypeInfo = new UnitTypeInfo();
         strategyInfo = new StrategyInfo();
+        rewardInfo = new RewardInfo();
         unitDivisionPositionInfo = new UnitDivisionPositionInfo();
         unitDivisionnfo = new UnitDivisionInfo();
         unitDivisionrole = new UnitDivisionRoleInfo();
