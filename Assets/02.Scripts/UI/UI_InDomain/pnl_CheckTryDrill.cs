@@ -24,7 +24,7 @@ public class pnl_CheckTryDrill : UIBase
 
     private void OnConfirmBtnClicked()
     {
-        LocatorManager.Instance.timeManager.AddEventToTimeline(4000);
+        LocatorManager.Instance.timeManager.AddEventToTimeline("4000");
         // 결과값 미리 계산해서 sceduledEvents에 집어넣기
         CalculateResultValue();
     }
