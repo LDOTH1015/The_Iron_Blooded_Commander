@@ -18,6 +18,27 @@ public class StrategySettingSystem : MonoBehaviour
 
     Strategy currentStrategy;
 
+    public ArmyLord DomainArmyLord
+    {
+        get { return domainArmyLord; }
+        private set { domainArmyLord = value; }
+    }
+    public List<ArmyKnight> KnightList
+    {
+        get { return knightList; }
+        private set { knightList = value; }
+    }
+    public List<ArmyUnitType> UnitTypeList
+    {
+        get { return unitTypeList; }
+        private set { unitTypeList = value; }
+    }
+    public List<ArmyStrategy> StrategyList
+    {
+        get { return strategyList; }
+        set { strategyList = value; }
+    }
+
     private void Awake()
     {
         if (TryGetComponent<DomainArmy>(out domainArmy))
@@ -30,7 +51,7 @@ public class StrategySettingSystem : MonoBehaviour
         }
     }
 
-    // DomainArmy의 데이터를 참조
+    // DomainArmy의 데이터를 참조해서 설정
     public void SetStrategySettingSystemData()
     {
         domainArmyLord = domainArmy.DomainArmyLord;
@@ -76,6 +97,8 @@ public class StrategySettingSystem : MonoBehaviour
         sb.Append("\n");
         Debug.Log(sb);
     }
+
+
     // UI의 반응과 연계하여 전략 설정 및 저장
 
 }
