@@ -74,7 +74,7 @@ public class PlayerTurnState : ITurnState
             // 훈련결과 업데이트
             if (completedEvents[i].ID == "4000")
             {
-                LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UnitType[0].TrainingLevel +=
+                LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UserUnitType[0].TrainingLevel +=
                     (int)completedEvents[i].ResultValue;
                 UIManager.Instance.Show<UI_ResultsOfTrainUnits>();
                 completedEvents.RemoveAt(i);

@@ -17,7 +17,7 @@ public class UnitDivisionPosition : IData
 
 public class UnitDivisionPositionDataArray
 {
-    public List<UnitDivisionPosition> UnitDivisionPositionDataTable;
+    public List<UnitDivisionPosition> UnitDivisionPosition;
 }
 
 public class UnitDivisionPositionInfo : AutoSave<UnitDivisionPositionDataArray>

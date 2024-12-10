@@ -83,12 +83,12 @@ public class DomainArmy : MonoBehaviour
     }
     public void TempSetDomainLordData()
     {
-        if (tempDomainData.lordDataArray == null || tempDomainData.lordDataArray.KnightDefault == null)
+        if (tempDomainData.lordDataArray == null || tempDomainData.lordDataArray.Lord == null)
         {
             Debug.LogError("lordDataArray or LordDataTable is null!");
             return;
         }
-        Lord lordDataTable = tempDomainData.lordDataArray.KnightDefault[0];// 현재 첫 번째 원소가 플레이어로 지정
+        Lord lordDataTable = tempDomainData.lordDataArray.Lord[0];// 현재 첫 번째 원소가 플레이어로 지정
         GameObject lordObj = new GameObject($"Lord_{lordDataTable.ID}");
         lordObj.transform.SetParent(transform);
         DomainArmyLord = lordObj.AddComponent<ArmyLord>();
@@ -148,12 +148,12 @@ public class DomainArmy : MonoBehaviour
     }
     public void TempSetUnitDivisionRoleDataList()
     {
-        if (tempDomainData.unitDivisionRoleDataArray == null || tempDomainData.unitDivisionRoleDataArray.UnitDivisionRoleDataTable == null)
+        if (tempDomainData.unitDivisionRoleDataArray == null || tempDomainData.unitDivisionRoleDataArray.UnitDivisionRole == null)
         {
             Debug.LogError("unitDivisionRoleDataArray or UnitDivisionRoleDataTable is null!");
             return;
         }
-        List<UnitDivisionRole> unitDivisionRoleDataTable = tempDomainData.unitDivisionRoleDataArray.UnitDivisionRoleDataTable;
+        List<UnitDivisionRole> unitDivisionRoleDataTable = tempDomainData.unitDivisionRoleDataArray.UnitDivisionRole;
         for (int i = 0; i < unitDivisionRoleDataTable.Count; i++)
         {
             GameObject roleObj = new GameObject($"UnitDivisionRole_{unitDivisionRoleDataTable[i].ID}");
