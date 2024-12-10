@@ -24,6 +24,14 @@ public class BattleTurnState : ITurnState
     {
         // TransitionToPlayerTurn 다시 플레이어턴에 가야하고 IsNextTurnBattle false로 돌려야함
         LocatorManager.Instance.turnManager.playerTurnState.isNextTurnBattle = false;
+        LocatorManager.Instance.StartCoroutine(WaitForSceneTransition());
+        UIManager.Instance.Show<pnl_Loading>();
         LocatorManager.Instance.turnManager.TransitionTo(LocatorManager.Instance.turnManager.playerTurnState);
+    }
+
+    private IEnumerator WaitForSceneTransition()
+    {
+        SceneManager.LoadScene("Test_SOLS");
+        yield return new WaitForSeconds(3.0f);
     }
 }
