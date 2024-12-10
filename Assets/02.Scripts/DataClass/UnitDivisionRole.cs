@@ -19,7 +19,7 @@ public class UnitDivisionRoleDataArray
     public List<UnitDivisionRole> UnitDivisionRoleDataTable;
 }
 
-public class UnitDivisionRoleInfo : AutoSave<UnitDivisionDataArray>
+public class UnitDivisionRoleInfo : AutoSave<UnitDivisionRoleDataArray>
 {
     public UnitDivisionRoleInfo() : base("UnitDivisionRoleDataTable") { }
 }

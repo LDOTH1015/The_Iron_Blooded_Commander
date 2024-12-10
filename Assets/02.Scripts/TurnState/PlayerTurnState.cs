@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerTurnState : ITurnState
 {
     // TimeManager로부터 받는 종료된 이벤트 리스트
-    public List<EventDataTable> temptList = new List<EventDataTable>();
-    public List<EventDataTable> completedEvents = new List<EventDataTable>();
+    public List<Event> temptList = new List<Event>();
+    public List<Event> completedEvents = new List<Event>();
 
     public bool isNextTurnBattle = false;
     public bool isLoadingOn;
@@ -26,7 +26,7 @@ public class PlayerTurnState : ITurnState
         // 0. 플레이어턴에 맞는 UI켜기
         // 1. 타임매니저로부터 현재시간 받아와서 현재날짜 UI업데이트, 이벤트타임라인 일자수차감
         LocatorManager.Instance.timeManager.UpdateTimeline();
-        foreach (EventDataTable eventDataTable in temptList)
+        foreach (Event eventDataTable in temptList)
         {
             completedEvents.Add(eventDataTable);
         }
@@ -72,15 +72,15 @@ public class PlayerTurnState : ITurnState
         {
             Debug.Log($"{completedEvents[i].Name} 결과 업데이트");
             // 훈련결과 업데이트
-            if (completedEvents[i].ID == 4000)
+            if (completedEvents[i].ID == "4000")
             {
-                LocatorManager.Instance.dataManager.unitTypeInfo.Data.UnitTypeDataTable[0].TrainingLevel +=
+                LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UnitType[0].TrainingLevel +=
                     (int)completedEvents[i].ResultValue;
                 UIManager.Instance.Show<UI_ResultsOfTrainUnits>();
                 completedEvents.RemoveAt(i);
             }
             // 공격받았을 때의 경고 업데이트.
-            else if (completedEvents[i].ID == 4500)
+            else if (completedEvents[i].ID == "4500")
             {
                 // 소문이벤트인지 분기점을 잡는 bool변수
                 isWarRumorEvent = true;
@@ -90,7 +90,7 @@ public class PlayerTurnState : ITurnState
                 completedEvents.RemoveAt(i);
             }
             // 실제로 영지에 쳐들어옴
-            else if (completedEvents[i].ID == 4501)
+            else if (completedEvents[i].ID == "4501")
             {
                 isNextTurnBattle = true;
                 // TODO: 턴 진행 버튼이 전투개시버튼으로 바뀌어야함
