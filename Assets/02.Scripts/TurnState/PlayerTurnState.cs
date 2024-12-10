@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,22 @@ public class PlayerTurnState : ITurnState
     // TimeManager로부터 받는 종료된 이벤트 리스트
     public List<Event> temptList = new List<Event>();
     public List<Event> completedEvents = new List<Event>();
+    public Dictionary<string, IEventHandler> eventHandlers;
 
     public bool isNextTurnBattle = false;
     public bool isLoadingOn;
     public bool isWarRumorEvent = false;
     
+    // 완료이벤트 딕셔너리를 위한 생성자
+    public PlayerTurnState()
+    {
+        eventHandlers = new Dictionary<string, IEventHandler>
+        {
+            { "4000", new EventResult_4000() },
+            { "4500", new EventResult_4500() },
+            { "4501", new EventResult_4501() }
+        };
+    }
     
     // 이렇게 하면 문제가 있음
     // 현재 내가 만들어둔 로직대로 턴을 진행했을경우
@@ -68,36 +80,65 @@ public class PlayerTurnState : ITurnState
     
     private void UpdateEventsResult()
     {
-        for (int i = 0; i < completedEvents.Count; i++)
+        // for (int i = 0; i < completedEvents.Count; i++)
+        // {
+        //     Debug.Log($"{completedEvents[i].Name} 결과 업데이트");
+        //     // 훈련결과 업데이트
+        //     if (completedEvents[i].ID == "4000")
+        //     {
+        //         LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UnitType[0].TrainingLevel +=
+        //             (int)completedEvents[i].ResultValue;
+        //         UIManager.Instance.Show<UI_ResultsOfTrainUnits>();
+        //         completedEvents.RemoveAt(i);
+        //     }
+        //     // 공격받았을 때의 경고 업데이트.
+        //     else if (completedEvents[i].ID == "4500")
+        //     {
+        //         // 소문이벤트인지 분기점을 잡는 bool변수
+        //         isWarRumorEvent = true;
+        //         // 경고 유아이 팝업
+        //         UIManager.Instance.Show<UI_WarnOfAttacked>();
+        //         Debug.Log("UI떳냐? 안떴으면 버그난거임");
+        //         completedEvents.RemoveAt(i);
+        //     }
+        //     // 실제로 영지에 쳐들어옴
+        //     else if (completedEvents[i].ID == "4501")
+        //     {
+        //         isNextTurnBattle = true;
+        //         // TODO: 턴 진행 버튼이 전투개시버튼으로 바뀌어야함
+        //         // 해당 UI스크립트에는 Exit()실행시켜주면됨 짜피 EXIT에서 배틀씬으로 넘어갈건지 아닌지 구별하니까
+        //         Debug.Log("전투개시 떳냐? 안떴으면 버그난거임");
+        //         completedEvents.RemoveAt(i);
+        //     }
+        // }
+
+        for (int i = completedEvents.Count - 1; i >= 0; i--)
         {
-            Debug.Log($"{completedEvents[i].Name} 결과 업데이트");
-            // 훈련결과 업데이트
-            if (completedEvents[i].ID == "4000")
+            Event currentEvent = completedEvents[i];
+            if (eventHandlers.TryGetValue(currentEvent.ID, out IEventHandler handler))
             {
-                LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UnitType[0].TrainingLevel +=
-                    (int)completedEvents[i].ResultValue;
-                UIManager.Instance.Show<UI_ResultsOfTrainUnits>();
-                completedEvents.RemoveAt(i);
-            }
-            // 공격받았을 때의 경고 업데이트.
-            else if (completedEvents[i].ID == "4500")
-            {
-                // 소문이벤트인지 분기점을 잡는 bool변수
-                isWarRumorEvent = true;
-                // 경고 유아이 팝업
-                UIManager.Instance.Show<UI_WarnOfAttacked>();
-                Debug.Log("UI떳냐? 안떴으면 버그난거임");
-                completedEvents.RemoveAt(i);
-            }
-            // 실제로 영지에 쳐들어옴
-            else if (completedEvents[i].ID == "4501")
-            {
-                isNextTurnBattle = true;
-                // TODO: 턴 진행 버튼이 전투개시버튼으로 바뀌어야함
-                // 해당 UI스크립트에는 Exit()실행시켜주면됨 짜피 EXIT에서 배틀씬으로 넘어갈건지 아닌지 구별하니까
-                Debug.Log("전투개시 떳냐? 안떴으면 버그난거임");
+                handler.Handle(currentEvent);
                 completedEvents.RemoveAt(i);
             }
         }
     }
+    
+    // // 아래는 각 이벤트들에 관한 결과메서드
+    // private void SwordMenTrainingResult(Event e)
+    // {
+    //     LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UnitType[0].TrainingLevel += (int)e.ResultValue;
+    //     UIManager.Instance.Show<UI_ResultsOfTrainUnits>();
+    // }
+    //
+    // private void WarRumor(Event e)
+    // {
+    //     isWarRumorEvent = true;
+    //     UIManager.Instance.Show<UI_WarnOfAttacked>();
+    // }
+    //
+    // private void BattleStart(Event e)
+    // {
+    //     isNextTurnBattle = true;
+    //     Debug.Log("전투개시 떳냐? 안떴으면 버그난거임");
+    // }
 }

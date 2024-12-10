@@ -26,7 +26,7 @@ public class Lord : IData
 
 public class LordDataArray
 {
-    public List<Lord> KnightDefault;
+    public List<Lord> Lord;
 }
 
 public class LordInfo : AutoSave<LordDataArray>
