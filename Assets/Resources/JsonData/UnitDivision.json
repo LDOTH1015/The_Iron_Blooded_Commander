@@ -1,0 +1,74 @@
+﻿{
+  "UnitDivision": [
+    {
+      "ID": "2100",
+      "UserID": "2100",
+      "StrategyID": "",
+      "NameEn": "IronClad Brigade",
+      "NameKr": "철갑 여단",
+      "Description": "중장갑으로 무장한 부대",
+      "IsKnightAlive": true,
+      "KnightID": 1000,
+      "UnitDivisionRole": 2200,
+      "UnitTypeID": 2000,
+      "UnitPersonnel": 120,
+      "Morale": 85.5
+    },
+    {
+      "ID": "2101",
+      "UserID": "2101",
+      "StrategyID": "",
+      "NameEn": "SilverLance Division",
+      "NameKr": "은빛 창 부대",
+      "Description": "창병으로 이루어진 부대",
+      "IsKnightAlive": false,
+      "KnightID": 1001,
+      "UnitDivisionRole": 2201,
+      "UnitTypeID": 2001,
+      "UnitPersonnel": 150,
+      "Morale": 90.0
+    },
+    {
+      "ID": "2102",
+      "UserID": "2102",
+      "StrategyID": "",
+      "NameEn": "GoldenShield Battalion",
+      "NameKr": "황금 방패 대대",
+      "Description": "방어 중심의 탱커 유닛 부대",
+      "IsKnightAlive": true,
+      "KnightID": 1002,
+      "UnitDivisionRole": 2202,
+      "UnitTypeID": 2002,
+      "UnitPersonnel": 100,
+      "Morale": 95.0
+    },
+    {
+      "ID": "2103",
+      "UserID": "2103",
+      "StrategyID": "",
+      "NameEn": "EagleEye Marksmen",
+      "NameKr": "독수리 눈 저격수",
+      "Description": "원거리 공격 전문 부대",
+      "IsKnightAlive": false,
+      "KnightID": 1003,
+      "UnitDivisionRole": 2203,
+      "UnitTypeID": 2003,
+      "UnitPersonnel": 80,
+      "Morale": 88.0
+    },
+    {
+      "ID": "2104",
+      "UserID": "2104",
+      "StrategyID": "",
+      "NameEn": "StormBreaker Regiment",
+      "NameKr": "폭풍 파괴 대대",
+      "Description": "공격력이 뛰어난 검병 부대",
+      "IsKnightAlive": true,
+      "KnightID": 1004,
+      "UnitDivisionRole": 2204,
+      "UnitTypeID": 2004,
+      "UnitPersonnel": 140,
+      "Morale": 92.5
+    }
+  ]
+}
