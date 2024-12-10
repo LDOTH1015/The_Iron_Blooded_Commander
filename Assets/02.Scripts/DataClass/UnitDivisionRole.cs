@@ -16,7 +16,7 @@ public class UnitDivisionRole : IData
 
 public class UnitDivisionRoleDataArray
 {
-    public List<UnitDivisionRole> UnitDivisionRoleDataTable;
+    public List<UnitDivisionRole> UnitDivisionRole;
 }
 
 public class UnitDivisionRoleInfo : AutoSave<UnitDivisionRoleDataArray>

@@ -11,7 +11,7 @@ public class Stage : IData
 
 public class StageDataArray
 {
-    public List<Stage> Strategy;
+    public List<Stage> Stage;
 }
 
 public class StageInfo : AutoSave<StageDataArray>
