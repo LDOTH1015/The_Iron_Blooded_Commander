@@ -11,7 +11,7 @@ public class TempDomainData : MonoBehaviour
     public KnightDataArray knightDataArray;
     public UnitTypeDataArray unitTypeDataArray;
     public StrategyDataArray strategyDataArray;
-    public UnitDivisionPositionDataaArray unitDivisionPositionDataArray;
+    public UnitDivisionPositionDataArray unitDivisionPositionDataArray;
     public UnitDivisionDataArray unitDivisionDataArray;
     public UnitDivisionRoleDataArray unitDivisionRoleDataArray;
 
@@ -22,14 +22,14 @@ public class TempDomainData : MonoBehaviour
     }
     public void SetTempData()
     {
-        domainArray = JsonConvert.DeserializeObject<DomainArray>(LoadData("DomainDataTable"));
-        lordDataArray = JsonConvert.DeserializeObject<LordDataArray>(LoadData("LordDataTable"));
-        knightDataArray = JsonConvert.DeserializeObject<KnightDataArray>(LoadData("KnightDataTable"));
-        unitTypeDataArray = JsonConvert.DeserializeObject<UnitTypeDataArray>(LoadData("UnitTypeDataTable"));
-        strategyDataArray = JsonConvert.DeserializeObject<StrategyDataArray>(LoadData("StrategyDataTable"));
-        unitDivisionPositionDataArray = JsonConvert.DeserializeObject<UnitDivisionPositionDataaArray>(LoadData("UnitDivisionPositionDataTable"));
-        unitDivisionDataArray = JsonConvert.DeserializeObject<UnitDivisionDataArray>(LoadData("UnitDivisionDataTable"));
-        unitDivisionRoleDataArray = JsonConvert.DeserializeObject<UnitDivisionRoleDataArray>(LoadData("UnitDivisionRoleDataTable"));
+        domainArray = JsonConvert.DeserializeObject<DomainArray>(LoadData("Domain"));
+        lordDataArray = JsonConvert.DeserializeObject<LordDataArray>(LoadData("Lord"));
+        knightDataArray = JsonConvert.DeserializeObject<KnightDataArray>(LoadData("KnightDefault"));
+        unitTypeDataArray = JsonConvert.DeserializeObject<UnitTypeDataArray>(LoadData("UnitType"));
+        strategyDataArray = JsonConvert.DeserializeObject<StrategyDataArray>(LoadData("Strategy"));
+        unitDivisionPositionDataArray = JsonConvert.DeserializeObject<UnitDivisionPositionDataArray>(LoadData("UnitDivisionPosition"));
+        unitDivisionDataArray = JsonConvert.DeserializeObject<UnitDivisionDataArray>(LoadData("UnitDivision"));
+        unitDivisionRoleDataArray = JsonConvert.DeserializeObject<UnitDivisionRoleDataArray>(LoadData("UnitDivisionRole"));
     }
     public string LoadData(string fileName)
     {
@@ -39,11 +39,15 @@ public class TempDomainData : MonoBehaviour
         TextAsset jsonTextAsset = Resources.Load<TextAsset>(loadDataPath);
         if (jsonTextAsset != null )
         {
-            Debug.Log($"Load 성공!");
+            Debug.Log($"{fileName}: Load 성공!");
             return jsonTextAsset.text;
         }
         
-        Debug.LogError($"{fileName} 데이터 없음.");
+        Debug.LogError($"{fileName}: 데이터 없음.");
         return "";
+    }
+    public void SaveData()
+    {
+
     }
 }

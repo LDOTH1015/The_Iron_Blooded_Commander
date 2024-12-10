@@ -9607,9 +9607,9 @@ RectTransform:
   - {fileID: 1119979634}
   m_Father: {fileID: 566341931}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -161.5}
   m_SizeDelta: {x: 150, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2080314289
@@ -9728,7 +9728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   domainArray:
-    DomainDataTable: []
+    Domain: []
 --- !u!114 &2084802059
 MonoBehaviour:
   m_ObjectHideFlags: 0

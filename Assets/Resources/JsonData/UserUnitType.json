@@ -16,6 +16,7 @@
       "MoveSpeed": 1.0,
       "AttackRange": 1.2,
       "Salary": 200,
+      "TrainingLevel": 5,
       "Experience": 50,
       "TrainingWeighted": 1.1,
       "ExperienceWeighted": 1.2
@@ -36,6 +37,7 @@
       "MoveSpeed": 1.0,
       "AttackRange": 1.5,
       "Salary": 220,
+      "TrainingLevel": 6,
       "Experience": 60,
       "TrainingWeighted": 1.2,
       "ExperienceWeighted": 1.3
@@ -56,6 +58,7 @@
       "MoveSpeed": 0.8,
       "AttackRange": 1.0,
       "Salary": 250,
+      "TrainingLevel": 8,
       "Experience": 70,
       "TrainingWeighted": 1.3,
       "ExperienceWeighted": 1.4
@@ -76,6 +79,7 @@
       "MoveSpeed": 1.2,
       "AttackRange": 2.5,
       "Salary": 230,
+      "TrainingLevel": 7,
       "Experience": 65,
       "TrainingWeighted": 1.2,
       "ExperienceWeighted": 1.3
@@ -96,6 +100,7 @@
       "MoveSpeed": 1.1,
       "AttackRange": 2.0,
       "Salary": 240,
+      "TrainingLevel": 7,
       "Experience": 68,
       "TrainingWeighted": 1.3,
       "ExperienceWeighted": 1.4

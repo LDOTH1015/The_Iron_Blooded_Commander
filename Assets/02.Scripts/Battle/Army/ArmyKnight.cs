@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 // 기사
-public class Knight : MonoBehaviour
+public class ArmyKnight : MonoBehaviour
 {
     // 기사 정보
-    KnightDataTable knightData;
+    KnightDefault knightData;
 
-    public KnightDataTable KnightData
+    public KnightDefault KnightData
     {
         get { return knightData; }
         private set { knightData = value; }
     }
 
-    public void SetKnightData(KnightDataTable inputKnightData)
+    public void SetKnightData(KnightDefault inputKnightData)
     {
         knightData = inputKnightData;
     }

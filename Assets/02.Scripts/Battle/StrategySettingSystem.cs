@@ -6,15 +6,15 @@ public class StrategySettingSystem : MonoBehaviour
 {
     DomainArmy domainArmy;
     // 전략리스트 
-    List<Strategy> strategyList;
+    List<ArmyStrategy> strategyList;
     // 부대임무리스트
-    List<UnitDivisionRoleDataTable> unitDivisionRoleDataList;
+    List<UnitDivisionRole> unitDivisionRoleDataList;
     // 영주
-    Lord domainLord;
+    ArmyLord domainArmyLord;
     // 기사리스트
-    List<Knight> knightList;
+    List<ArmyKnight> knightList;
     // 병종리스트
-    List<UnitType> unitTypeList;
+    List<ArmyUnitType> unitTypeList;
 
     Strategy currentStrategy;
 
@@ -33,7 +33,7 @@ public class StrategySettingSystem : MonoBehaviour
     // DomainArmy의 데이터를 참조
     public void SetStrategySettingSystemData()
     {
-        domainLord = domainArmy.DomainLord;
+        domainArmyLord = domainArmy.DomainArmyLord;
         strategyList = domainArmy.StrategyList;
         unitDivisionRoleDataList = domainArmy.UnitDivisionRoleDataList;
         knightList = domainArmy.KnightList;
@@ -44,7 +44,7 @@ public class StrategySettingSystem : MonoBehaviour
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("로드: ");
-        sb.Append(domainLord.LordData.NameKr);
+        sb.Append(domainArmyLord.LordData.Name);
         sb.Append("\n");
         sb.Append("전략 시스템's \n전략 목록: ");
         for (int i = 0; i < strategyList.Count; i++)

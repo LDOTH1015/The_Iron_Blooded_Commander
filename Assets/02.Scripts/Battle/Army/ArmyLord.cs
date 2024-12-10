@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 
-public class Lord : MonoBehaviour
+public class ArmyLord : MonoBehaviour
 {
-    LordDataTable lordData;
+    Lord lordData;
 
-    public LordDataTable LordData
+    public Lord LordData
     {
         get { return lordData; }
         private set { lordData = value; }
     }
 
-    public void SetLordData(LordDataTable inputLordData)
+    public void SetLordData(Lord inputLordData)
     {
         lordData = inputLordData;
     }

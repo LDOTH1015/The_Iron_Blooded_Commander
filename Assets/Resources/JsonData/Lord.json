@@ -1,3 +1,44 @@
 ﻿{
-  "Lord": []
+  "Lord": [
+    {
+      "ID": "5000",
+      "UserID": "Player Lord",
+      "Name": "플레이어 영주",
+      "Description": "영웅적인 플레이어의 영주",
+      "Prefeb": "LordPlayer",
+      "Thumbnail": "PlayerIcon",
+      "AttackPower": 120.0,
+      "AttackSpeed": 1.5,
+      "Health": 1500.0,
+      "Defense": 80.0,
+      "MoveSpeed": 7.5,
+      "AttackRange": 5.0,
+      "Leadership": 90,
+      "Intelligence": 85,
+      "TrainingLevel": 10,
+      "Experience": 0,
+      "TrainingWeighted": 1.2,
+      "ExperienceWeighted": 1.0
+    },
+    {
+      "ID": "5001",
+      "UserID": "AI Lord",
+      "Name": "AI 영주",
+      "Description": "컴퓨터 AI가 조종하는 영주",
+      "Prefeb": "LordAI",
+      "Thumbnail": "AIIcon",
+      "AttackPower": 100.0,
+      "AttackSpeed": 1.2,
+      "Health": 1400.0,
+      "Defense": 70.0,
+      "MoveSpeed": 6.5,
+      "AttackRange": 5.0,
+      "Leadership": 85,
+      "Intelligence": 75,
+      "TrainingLevel": 8,
+      "Experience": 0,
+      "TrainingWeighted": 1.1,
+      "ExperienceWeighted": 1.0
+    }
+  ]
 }

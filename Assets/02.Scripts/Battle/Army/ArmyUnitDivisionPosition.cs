@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 // 부대 배치
-public class UnitDivisionPosition : MonoBehaviour
+public class ArmyUnitDivisionPosition : MonoBehaviour
 {
     // 부대배치정보 - 부대(UnitDivision), 위치(Position), 회전(Rotation)
-    UnitDivisionPositionDataTable unitDivisionPositionData;
+    UnitDivisionPosition unitDivisionPositionData;
 
-    public UnitDivisionPositionDataTable UnitDivisionPositionData
+    public UnitDivisionPosition UnitDivisionPositionData
     {
         get { return unitDivisionPositionData; }
         private set { unitDivisionPositionData = value; }
     }
 
-    public void SetUnitDivisionPositionData(UnitDivisionPositionDataTable inputUnitDivisionPositionData)
+    public void SetUnitDivisionPositionData(UnitDivisionPosition inputUnitDivisionPositionData)
     {
         unitDivisionPositionData = inputUnitDivisionPositionData;
     }

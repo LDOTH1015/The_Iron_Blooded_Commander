@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 // 전략
-public class Strategy : MonoBehaviour
+public class ArmyStrategy : MonoBehaviour
 {
     // 전략 정보
-    StrategyDataTable strategyData;
+    Strategy strategyData;
 
-    public StrategyDataTable StrategyData
+    public Strategy StrategyData
     {
         get { return strategyData; }
         private set { strategyData = value; }
     }
 
-    public void SetStrategyData(StrategyDataTable inputStrategyData)
+    public void SetStrategyData(Strategy inputStrategyData)
     {
         strategyData = inputStrategyData;
     }

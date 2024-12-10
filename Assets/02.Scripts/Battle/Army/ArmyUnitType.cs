@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 // 병종
-public class UnitType : MonoBehaviour
+public class ArmyUnitType : MonoBehaviour
 {
     // 병종 정보
-    UnitTypeDataTable unitTypeData;
+    UnitType unitTypeData;
 
-    public UnitTypeDataTable UnitTypeData
+    public UnitType UnitTypeData
     {
         get { return unitTypeData; }
         private set { unitTypeData = value; }
     }
-    public void SetUnitTypeData(UnitTypeDataTable inputUnitTypeData)
+    public void SetUnitTypeData(UnitType inputUnitTypeData)
     {
         unitTypeData = inputUnitTypeData;
     }

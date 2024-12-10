@@ -15,12 +15,12 @@ public class UnitDivisionPosition : IData
     public int RotationZ { get; set; }
 }
 
-public class UnitDivisionPositionDataaArray
+public class UnitDivisionPositionDataArray
 {
     public List<UnitDivisionPosition> UnitDivisionPositionDataTable;
 }
 
-public class UnitDivisionPositionInfo : AutoSave<UnitDivisionPositionDataaArray>
+public class UnitDivisionPositionInfo : AutoSave<UnitDivisionPositionDataArray>
 {
     public UnitDivisionPositionInfo() : base("UnitDivisionPositionDataTable") { }
 }
