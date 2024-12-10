@@ -47,7 +47,7 @@ public class UIManager : MonoSingleton<UIManager>
 
         _ui.name = uiName.Replace("(Clone)", "");// Instantiate시 이름앞에 클론 붙는거 제거
         _ui.canvas = _canvas;
-        _ui.canvas.sortingOrder = uiList.Count; // UI가 생성되는 데 안 보이면 해당 코드에 +1 해주기 
+        _ui.canvas.sortingOrder = uiList.Count + 1; // UI가 생성되는 데 안 보이면 해당 코드에 +1 해주기 
 
         return (T)_ui; // 해당 UI의 형태로 형변환 반환타입 챙겨주는거 
     }

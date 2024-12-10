@@ -30,6 +30,7 @@ public class DataManager : IManager
         // { 
         //     data.DomainDataTable[0].Name = ""; 
         // });
+        domainInfo = new DomainInfo();
         eventInfo = new EventInfo();
         eventResultInfo = new EventResultInfo();
         knightInfo = new KnightInfo();

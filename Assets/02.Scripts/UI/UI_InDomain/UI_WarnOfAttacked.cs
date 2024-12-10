@@ -13,6 +13,7 @@ public class UI_WarnOfAttacked : UIBase, IPointerClickHandler, IPointerEnterHand
     {
         base.Awake();
         outline = transform.GetChild(0).gameObject.GetComponent<Outline>();
+        
     }
 
     public void OnPointerClick(PointerEventData eventData)

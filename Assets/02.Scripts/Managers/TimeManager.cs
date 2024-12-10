@@ -19,7 +19,7 @@ public class TimeManager : IManager
     
     [HideInInspector]
     // 대기열 컬렉션 만들기
-    public List<EventDataTable> scheduledEvents;
+    public List<Event> scheduledEvents;
     
     public void Initialize()
     {
@@ -30,8 +30,8 @@ public class TimeManager : IManager
         currentYear = 1;
         currentMonth = 1;
         currentDay = 1;
-        scheduledEvents = new List<EventDataTable>();
-        eventInfo = LocatorManager.Instance.dataManager.eventData;
+        scheduledEvents = new List<Event>();
+        eventInfo = LocatorManager.Instance.dataManager.eventInfo;
     }
 
     // scheduledEvent에 이벤트를 등록하는 모든행위에 반드시 수반되어야 하는 메서드
@@ -56,10 +56,10 @@ public class TimeManager : IManager
     {
         int? _dueDate = null;
         
-        for (int i = 0; i < eventInfo.Data.EventDataTable.Count; i++)
+        for (int i = 0; i < eventInfo.Data.Event.Count; i++)
         {
             // 이벤트ID를 기준으로 전체 이벤트 데이터테이블에서 인덱싱
-            if (eventInfo.Data.EventDataTable[i].ID == eventID)
+            if (eventInfo.Data.Event[i].ID == eventID.ToString())
             {
                 // // 예정된 이벤트 대기열에 eventID에 맞는 이벤트를 추가
                 // scheduledEvents.Add(eventInfo.Data.EventDataTable[i]);
@@ -71,8 +71,8 @@ public class TimeManager : IManager
                 
                 // 수정 구분선
                 
-                string jsonString = JsonConvert.SerializeObject(eventInfo.Data.EventDataTable[i]);
-                EventDataTable newEvent = JsonConvert.DeserializeObject<EventDataTable>(jsonString);
+                string jsonString = JsonConvert.SerializeObject(eventInfo.Data.Event[i]);
+                Event newEvent = JsonConvert.DeserializeObject<Event>(jsonString);
                 _dueDate = Random.Range(newEvent.MinClearTime, newEvent.MaxClearTime);
                 newEvent.DueDate = _dueDate.Value;
                 scheduledEvents.Add(newEvent);
@@ -157,9 +157,9 @@ public class TimeManager : IManager
     }
     
     // 아래는 퀵정렬을 위한 메서드들임 Partion~QuickSort까지
-    private int Partion(List<EventDataTable> events, int low, int high)
+    private int Partion(List<Event> events, int low, int high)
     {
-        EventDataTable pivot = events[high];
+        Event pivot = events[high];
         int i = low - 1;
 
         for (int j = low; j < high; j++)
@@ -174,14 +174,14 @@ public class TimeManager : IManager
         return i + 1;
     }
 
-    private void Swap(List<EventDataTable> events, int i, int j)
+    private void Swap(List<Event> events, int i, int j)
     {
-        EventDataTable temp = events[i];
+        Event temp = events[i];
         events[i] = events[j];
         events[j] = temp;
     }
 
-    private void QuickSort(List<EventDataTable> events, int low, int high)
+    private void QuickSort(List<Event> events, int low, int high)
     {
         if (low < high)
         {
