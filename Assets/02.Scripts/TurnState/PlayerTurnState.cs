@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerTurnState : ITurnState
 {
@@ -10,9 +11,28 @@ public class PlayerTurnState : ITurnState
     public List<Event> completedEvents = new List<Event>();
     public Dictionary<string, IEventHandler> eventHandlers;
 
-    public bool isNextTurnBattle = false;
     public bool isLoadingOn;
     public bool isWarRumorEvent = false;
+
+    public event Action<bool> OnNextButtonChanged;
+    
+    private bool isNextTurnBattl;
+    public bool IsNextTurnBattle
+    {
+        get => isNextTurnBattl;
+        set
+        {
+            if (isNextTurnBattl != value && SceneManager.GetActiveScene().name == "Test_SOLS")
+            {
+                isNextTurnBattl = value;
+                OnNextButtonChanged?.Invoke(isNextTurnBattl);
+            }
+            else if (isNextTurnBattl != value)
+            {
+                isNextTurnBattl = value;
+            }
+        }
+    }
     
     // 완료이벤트 딕셔너리를 위한 생성자
     public PlayerTurnState()
@@ -46,11 +66,11 @@ public class PlayerTurnState : ITurnState
         // 2. 타임매니저로부터 종료되는 이벤트 받아와서 재화상태업데이트, 완료UI팝업
         // -> 일단 1번에서 종료되는 이벤트는 받아왔음.
         // -> 결과값도 이미 테이블안에 담겨져 있음. 이걸 어떻게 DomainDataTable에 넣는가가 문제임
-        UpdateEventsResult();
-        // 3. 타임매니저로부터 다음이벤트가 배틀이면 IsNextTurnBattle true업데이트해줘야함
-        
-        // 로딩창 끄게하는 boo변수(로딩창 스크립트에서 변수를 확인하고 끔)
+        // 로딩창 끄게하는 bool변수(로딩창 스크립트에서 변수를 확인하고 끔)
         isLoadingOn = false;
+        // 3. 타임매니저로부터 다음이벤트가 배틀이면 IsNextTurnBattle true업데이트해줘야함
+        UpdateEventsResult();
+        
     }
     
     
@@ -65,7 +85,7 @@ public class PlayerTurnState : ITurnState
     {
         isLoadingOn = true;
         // Exit()실행 후 ai턴이나 배틀턴으로 턴 넘김
-        if (!isNextTurnBattle)
+        if (!IsNextTurnBattle)
         {
             UIManager.Instance.Show<pnl_Loading>();
             LocatorManager.Instance.turnManager.TransitionTo(LocatorManager.Instance.turnManager.aiTurnState);

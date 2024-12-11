@@ -2774,6 +2774,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_NextBtnUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5803966479597656069, guid: f52904c774379504980385cfc3c4bf81, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

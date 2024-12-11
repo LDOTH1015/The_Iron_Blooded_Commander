@@ -29,7 +29,7 @@ public class EventResult_4501 : IEventHandler
 {
     public void Handle(Event e)
     {
-        LocatorManager.Instance.turnManager.playerTurnState.isNextTurnBattle = true;
+        LocatorManager.Instance.turnManager.playerTurnState.IsNextTurnBattle = true;
         Debug.Log("전투개시 떳냐? 안떴으면 버그난거임");
 
     }
