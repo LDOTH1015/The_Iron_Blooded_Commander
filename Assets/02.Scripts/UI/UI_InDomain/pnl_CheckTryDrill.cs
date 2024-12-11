@@ -17,7 +17,7 @@ public class pnl_CheckTryDrill : UIBase
     private void InitUI()
     {
         confirmBtn = transform.GetChild(0).gameObject.GetComponent<Button>();
-        cancelBtn = transform.GetChild(0).gameObject.GetComponent<Button>();
+        cancelBtn = transform.GetChild(1).gameObject.GetComponent<Button>();
         confirmBtn.onClick.AddListener(OnConfirmBtnClicked);
         cancelBtn.onClick.AddListener(OnCancelBtnClicked);
     }

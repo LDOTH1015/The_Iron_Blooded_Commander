@@ -23,13 +23,19 @@ public class pnl_Loading : UIBase
 
     protected override void Awake()
     {
+        base.Awake();
         StartCoroutine(Hide2UI());
+    }
+
+    private void Start()
+    {
+        canvas.sortingOrder = 30;
     }
 
     private IEnumerator Hide2UI()
     {
-        yield return waitWhileLoading;
         yield return waitForSecondsRealtime;
+        yield return waitWhileLoading;
         Hide();
     }
 }
