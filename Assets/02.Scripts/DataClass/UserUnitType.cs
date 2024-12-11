@@ -25,7 +25,7 @@ public class UserUnitType : IData
 
 public class UserUnitTypeDataArray
 {
-    public List<UserUnitType> UnitType;
+    public List<UserUnitType> UserUnitType;
 }
 
 public class UserUnitTypeInfo : AutoSave<UserUnitTypeDataArray>

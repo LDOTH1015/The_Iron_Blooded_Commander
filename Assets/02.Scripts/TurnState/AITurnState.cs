@@ -11,9 +11,9 @@ public class AITurnState : ITurnState
         // 재화상태 업데이트도 예정일기준으로 업데이트를 하게끔 수정해야함.
         AIDomainStateUpdate();
         // 디버그는 ai영지상태 업데이트 체크용
-        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[1].Gold}");
-        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[2].Gold}");
-        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[3].Gold}");
+        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.Domain[1].Gold}");
+        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.Domain[2].Gold}");
+        Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.Domain[3].Gold}");
     }
     
     // AI상태와 플레이어 상태 비교 후 침략여부 결정 -> 결정 후 타임매니저 이벤트타임라인에 추가
@@ -41,13 +41,13 @@ public class AITurnState : ITurnState
     // TODO: 턴사이사이 날짜를 고려해서 업데이트가 이뤄져야함.
     private void AIDomainStateUpdate()
     {
-        for (int i = 1; i < LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable.Count; i++)
+        for (int i = 1; i < LocatorManager.Instance.dataManager.domainInfo.Data.Domain.Count; i++)
         {
-            LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[i].Food += Random.Range(-100, 100);
-            LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[i].Gold += Random.Range(-100, 100);
-            LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[i].Population += Random.Range(-50, 50);
-            LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[i].Steel += Random.Range(-50, 50);
-            LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[i].Fame += Random.Range(-10, 10);
+            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Food += Random.Range(-100, 100);
+            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Gold += Random.Range(-100, 100);
+            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Population += Random.Range(-50, 50);
+            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Steel += Random.Range(-50, 50);
+            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Fame += Random.Range(-10, 10);
         }
     }
     
@@ -64,7 +64,7 @@ public class AITurnState : ITurnState
         // 8. 침략이 결정이 되면 이벤트 두개 연속등록(경고이벤트와 실제침공이벤트)
         // 9. Player를 공격할 병력을 설정하는 메서드,로직이 필요.
 
-        for (int i = 1; i < LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable.Count; i++)
+        for (int i = 1; i < LocatorManager.Instance.dataManager.domainInfo.Data.Domain.Count; i++)
         {
             // 가중치(이게 1.0을 넘어가면 침략결정 주사위굴림)
             float _weightFactor = 1.0f;
@@ -83,7 +83,7 @@ public class AITurnState : ITurnState
                 {
                     LocatorManager.Instance.timeManager.AddEventToTimeline(4500);
                     LocatorManager.Instance.timeManager.AddEventToTimeline(4501);
-                    Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.DomainDataTable[i].Name}가 침략이벤트 리스트에 넣엇음");
+                    Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Name}가 침략이벤트 리스트에 넣엇음");
                 }
             }
         }
