@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+
+[Serializable]
+public class UnitDivisionPosition : IData
+{
+    public string ID { get; set; }
+    public string StrategyID { get; set; }
+    public string UnitDivisionID { get; set; }
+    public int PositionX { get; set; }
+    public int PositionY { get; set; }
+    public int PositionZ { get; set; }
+    public int RotationX { get; set; }
+    public int RotationY { get; set; }
+    public int RotationZ { get; set; }
+}
+
+public class UnitDivisionPositionDataArray
+{
+    public List<UnitDivisionPosition> UnitDivisionPosition;
+}
+
+public class UnitDivisionPositionInfo : AutoSave<UnitDivisionPositionDataArray>
+{
+    public UnitDivisionPositionInfo() : base("UnitDivisionPositionDataTable") { }
+}

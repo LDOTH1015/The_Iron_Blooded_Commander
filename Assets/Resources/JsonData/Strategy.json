@@ -1,0 +1,34 @@
+﻿{
+  "Strategy": [
+    {
+      "ID": "2100",
+      "UserID": "",
+      "Name": "테스트이름",
+      "Description": "더미데이터"
+    },
+    {
+      "ID": "2101",
+      "UserID": "",
+      "Name": "테스트이름",
+      "Description": "더미데이터"
+    },
+    {
+      "ID": "2102",
+      "UserID": "",
+      "Name": "테스트이름",
+      "Description": "더미데이터"
+    },
+    {
+      "ID": "2103",
+      "UserID": "",
+      "Name": "테스트이름",
+      "Description": "더미데이터"
+    },
+    {
+      "ID": "2104",
+      "UserID": "",
+      "Name": "테스트이름",
+      "Description": "더미데이터"
+    }
+  ]
+}

@@ -20,8 +20,8 @@ public class txt_ResultsOfTrainUnits : UIBase
 
     private void ShowUIText()
     {
-        earlyText.Append(LocatorManager.Instance.dataManager.eventData.Data.EventDataTable[0].EarlyCompletionPhrase);
-        lateText.Append(LocatorManager.Instance.dataManager.eventData.Data.EventDataTable[0].DelayedCompletionPhrase);
+        earlyText.Append(LocatorManager.Instance.dataManager.eventInfo.Data.Event[0].EarlyCompletionPhrase);
+        lateText.Append(LocatorManager.Instance.dataManager.eventInfo.Data.Event[0].DelayedCompletionPhrase);
 
         
         resultsText.text = earlyText.ToString();
