@@ -1,8 +1,8 @@
 ﻿{
   "Lord": [
     {
-      "ID": "5000",
-      "UserID": "Player Lord",
+      "ID": "lo001",
+      "DomainID": "Player Lord",
       "Name": "플레이어 영주",
       "Description": "영웅적인 플레이어의 영주",
       "Prefeb": "LordPlayer",
@@ -21,8 +21,8 @@
       "ExperienceWeighted": 1.0
     },
     {
-      "ID": "5001",
-      "UserID": "AI Lord",
+      "ID": "lo002",
+      "DomainID": "AI Lord",
       "Name": "AI 영주",
       "Description": "컴퓨터 AI가 조종하는 영주",
       "Prefeb": "LordAI",
