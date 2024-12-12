@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class UserKnight : KnightDefault, IData
 {
     public string KnightID { get; set; }
-    public string UserID { get; set; }
+    public string DomainID { get; set; }
 }
 
 public class UserKnightDataArray

@@ -26,10 +26,7 @@ public class DataManager : IManager
     {
         // TODO: 저장된 데이터 불러오기랑 새게임 시 새로운 플레이어데이터만들기. 두 가지 경우가 있기때문에 조건식달아야함
         //제이슨데이터 자체를 수정하는 방법. 사용할때 조심하길!
-        // domainInfo.Modify(data => 
-        // { 
-        //     data.DomainDataTable[0].Name = ""; 
-        // });
+        // 
         domainInfo = new DomainInfo();
         eventInfo = new EventInfo();
         eventResultInfo = new EventResultInfo();
