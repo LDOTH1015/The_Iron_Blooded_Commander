@@ -16,6 +16,7 @@ public class AnimationController : MonoBehaviour
         animator.SetFloat("Speed", 0);
     }
 
+    // 추가 예정
     public void PlayWalk()
     {
         animator.SetFloat("Speed", 0.5f);
@@ -26,11 +27,13 @@ public class AnimationController : MonoBehaviour
         animator.SetFloat("Speed", 1f);
     }
 
+
+    // 추가 예정
     public void PlayCombatIdle()
     {
         animator.SetBool("IsInCombat", true);
     }
-
+    // Combat Mode -> Idle
     public void ResetCombatIdle()
     {
         animator.SetBool("IsInCombat", false);
