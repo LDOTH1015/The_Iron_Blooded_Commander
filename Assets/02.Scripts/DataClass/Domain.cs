@@ -7,6 +7,7 @@ public class Domain : IData
     public string ID { get; set; }
     public string UserID { get; set; }
     public string Name { get; set; }
+    public string State { get; set; }
     public string LordID { get; set; }
     public int Population { get; set; }
     public int PublicOpinion { get; set; }

@@ -39,9 +39,9 @@ public class PlayerTurnState : ITurnState
     {
         eventHandlers = new Dictionary<string, IEventHandler>
         {
-            { "4000", new EventResult_4000() },
-            { "4500", new EventResult_4500() },
-            { "4501", new EventResult_4501() }
+            { "evd000", new EventResult_evd000() },
+            { "evai000", new EventResult_evai000() },
+            { "evai001", new EventResult_evai001() }
         };
     }
     
