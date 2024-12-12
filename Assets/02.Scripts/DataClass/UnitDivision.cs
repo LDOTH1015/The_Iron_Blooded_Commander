@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class UnitDivision : IData
 {
     public string ID { get; set; }
-    public string UserID { get; set; }
+    public string DomainID { get; set; }
     public string StrategyID { get; set; }
     public string NameEn { get; set; }
     public string NameKr { get; set; }

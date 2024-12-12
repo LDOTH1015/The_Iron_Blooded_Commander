@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class UserUnitType : IData
 {
     public string ID { get; set; }
+    public string UnitTypeID { get; set; }
+    public string DomainID { get; set; }
     public string NameEn { get; set; }
     public string NameKr { get; set; }
     public string Description { get; set; }
