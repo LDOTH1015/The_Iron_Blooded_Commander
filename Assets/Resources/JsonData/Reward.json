@@ -1,7 +1,7 @@
 ﻿{
   "Reward": [
     {
-      "ID": 1,
+      "ID": "re001",
       "StageID": 1,
       "ItemType": "1",
       "RewardNum": 1,

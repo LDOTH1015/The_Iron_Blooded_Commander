@@ -1,7 +1,7 @@
 ﻿{
   "EventResult": [
     {
-      "ID": "9000",
+      "ID": "evRe001",
       "Name": "훈련완료",
       "EventID": "4000",
       "ResultValue": 0
