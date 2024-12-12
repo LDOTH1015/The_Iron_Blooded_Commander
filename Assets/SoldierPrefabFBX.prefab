@@ -724,6 +724,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6f1a3abc3e476eb4f823f1ab4687b4ed, type: 2}
+    - target: {fileID: -6073648776475452068, guid: 0540253e43cfa804b865a16de7086e87, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.52191055
+      objectReference: {fileID: 0}
+    - target: {fileID: -6073648776475452068, guid: 0540253e43cfa804b865a16de7086e87, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.47708425
+      objectReference: {fileID: 0}
+    - target: {fileID: -6073648776475452068, guid: 0540253e43cfa804b865a16de7086e87, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5219111
+      objectReference: {fileID: 0}
+    - target: {fileID: -6073648776475452068, guid: 0540253e43cfa804b865a16de7086e87, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.4770838
+      objectReference: {fileID: 0}
     - target: {fileID: -5811863545357956813, guid: 0540253e43cfa804b865a16de7086e87, type: 3}
       propertyPath: m_RootBone
       value: 
@@ -9227,7 +9243,7 @@ Animator:
   m_GameObject: {fileID: 7810795690875102145}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 45f944a4396b0a54398eb1abe6743296, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e337645c7cb437547ab271dfb418fa37, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
