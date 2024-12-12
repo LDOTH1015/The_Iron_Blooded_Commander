@@ -2,26 +2,46 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerTurnState : ITurnState
 {
     // TimeManager로부터 받는 종료된 이벤트 리스트
-    public List<Event> temptList = new List<Event>();
-    public List<Event> completedEvents = new List<Event>();
+    public List<EventData> temptList = new List<EventData>();
+    public List<EventData> completedEvents = new List<EventData>();
     public Dictionary<string, IEventHandler> eventHandlers;
 
-    public bool isNextTurnBattle = false;
     public bool isLoadingOn;
     public bool isWarRumorEvent = false;
+
+    public event Action<bool> OnNextButtonChanged;
+    
+    private bool isNextTurnBattl;
+    public bool IsNextTurnBattle
+    {
+        get => isNextTurnBattl;
+        set
+        {
+            if (isNextTurnBattl != value && SceneManager.GetActiveScene().name == "Test_SOLS")
+            {
+                isNextTurnBattl = value;
+                OnNextButtonChanged?.Invoke(isNextTurnBattl);
+            }
+            else if (isNextTurnBattl != value)
+            {
+                isNextTurnBattl = value;
+            }
+        }
+    }
     
     // 완료이벤트 딕셔너리를 위한 생성자
     public PlayerTurnState()
     {
         eventHandlers = new Dictionary<string, IEventHandler>
         {
-            { "4000", new EventResult_4000() },
-            { "4500", new EventResult_4500() },
-            { "4501", new EventResult_4501() }
+            { "evd000", new EventResult_evd000() },
+            { "evai000", new EventResult_evai000() },
+            { "evai001", new EventResult_evai001() }
         };
     }
     
@@ -38,7 +58,7 @@ public class PlayerTurnState : ITurnState
         // 0. 플레이어턴에 맞는 UI켜기
         // 1. 타임매니저로부터 현재시간 받아와서 현재날짜 UI업데이트, 이벤트타임라인 일자수차감
         LocatorManager.Instance.timeManager.UpdateTimeline();
-        foreach (Event eventDataTable in temptList)
+        foreach (EventData eventDataTable in temptList)
         {
             completedEvents.Add(eventDataTable);
         }
@@ -46,11 +66,11 @@ public class PlayerTurnState : ITurnState
         // 2. 타임매니저로부터 종료되는 이벤트 받아와서 재화상태업데이트, 완료UI팝업
         // -> 일단 1번에서 종료되는 이벤트는 받아왔음.
         // -> 결과값도 이미 테이블안에 담겨져 있음. 이걸 어떻게 DomainDataTable에 넣는가가 문제임
-        UpdateEventsResult();
-        // 3. 타임매니저로부터 다음이벤트가 배틀이면 IsNextTurnBattle true업데이트해줘야함
-        
-        // 로딩창 끄게하는 boo변수(로딩창 스크립트에서 변수를 확인하고 끔)
+        // 로딩창 끄게하는 bool변수(로딩창 스크립트에서 변수를 확인하고 끔)
         isLoadingOn = false;
+        // 3. 타임매니저로부터 다음이벤트가 배틀이면 IsNextTurnBattle true업데이트해줘야함
+        UpdateEventsResult();
+        
     }
     
     
@@ -65,7 +85,7 @@ public class PlayerTurnState : ITurnState
     {
         isLoadingOn = true;
         // Exit()실행 후 ai턴이나 배틀턴으로 턴 넘김
-        if (!isNextTurnBattle)
+        if (!IsNextTurnBattle)
         {
             UIManager.Instance.Show<pnl_Loading>();
             LocatorManager.Instance.turnManager.TransitionTo(LocatorManager.Instance.turnManager.aiTurnState);
@@ -80,41 +100,9 @@ public class PlayerTurnState : ITurnState
     
     private void UpdateEventsResult()
     {
-        // for (int i = 0; i < completedEvents.Count; i++)
-        // {
-        //     Debug.Log($"{completedEvents[i].Name} 결과 업데이트");
-        //     // 훈련결과 업데이트
-        //     if (completedEvents[i].ID == "4000")
-        //     {
-        //         LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UnitType[0].TrainingLevel +=
-        //             (int)completedEvents[i].ResultValue;
-        //         UIManager.Instance.Show<UI_ResultsOfTrainUnits>();
-        //         completedEvents.RemoveAt(i);
-        //     }
-        //     // 공격받았을 때의 경고 업데이트.
-        //     else if (completedEvents[i].ID == "4500")
-        //     {
-        //         // 소문이벤트인지 분기점을 잡는 bool변수
-        //         isWarRumorEvent = true;
-        //         // 경고 유아이 팝업
-        //         UIManager.Instance.Show<UI_WarnOfAttacked>();
-        //         Debug.Log("UI떳냐? 안떴으면 버그난거임");
-        //         completedEvents.RemoveAt(i);
-        //     }
-        //     // 실제로 영지에 쳐들어옴
-        //     else if (completedEvents[i].ID == "4501")
-        //     {
-        //         isNextTurnBattle = true;
-        //         // TODO: 턴 진행 버튼이 전투개시버튼으로 바뀌어야함
-        //         // 해당 UI스크립트에는 Exit()실행시켜주면됨 짜피 EXIT에서 배틀씬으로 넘어갈건지 아닌지 구별하니까
-        //         Debug.Log("전투개시 떳냐? 안떴으면 버그난거임");
-        //         completedEvents.RemoveAt(i);
-        //     }
-        // }
-
         for (int i = completedEvents.Count - 1; i >= 0; i--)
         {
-            Event currentEvent = completedEvents[i];
+            EventData currentEvent = completedEvents[i];
             if (eventHandlers.TryGetValue(currentEvent.ID, out IEventHandler handler))
             {
                 handler.Handle(currentEvent);
@@ -122,23 +110,4 @@ public class PlayerTurnState : ITurnState
             }
         }
     }
-    
-    // // 아래는 각 이벤트들에 관한 결과메서드
-    // private void SwordMenTrainingResult(Event e)
-    // {
-    //     LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UnitType[0].TrainingLevel += (int)e.ResultValue;
-    //     UIManager.Instance.Show<UI_ResultsOfTrainUnits>();
-    // }
-    //
-    // private void WarRumor(Event e)
-    // {
-    //     isWarRumorEvent = true;
-    //     UIManager.Instance.Show<UI_WarnOfAttacked>();
-    // }
-    //
-    // private void BattleStart(Event e)
-    // {
-    //     isNextTurnBattle = true;
-    //     Debug.Log("전투개시 떳냐? 안떴으면 버그난거임");
-    // }
 }

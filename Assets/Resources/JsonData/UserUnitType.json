@@ -3,7 +3,7 @@
     {
       "ID": "uUnTp001",
       "UnitTypeID": "unTp001",
-      "DomainID": "do001",
+      "DomainID": "do007",
       "NameEn": "Swordsman",
       "NameKr": "검병",
       "Description": "근접 전투에 강한 기본 유닛",
@@ -24,7 +24,7 @@
     {
       "ID": "uUnTp002",
       "UnitTypeID": "unTp002",
-      "DomainID": "do001",
+      "DomainID": "do007",
       "NameEn": "Spearman",
       "NameKr": "창병",
       "Description": "긴 사거리를 가진 근접 유닛",
@@ -45,7 +45,7 @@
     {
       "ID": "uUnTp003",
       "UnitTypeID": "unTp003",
-      "DomainID": "do001",
+      "DomainID": "do007",
       "NameEn": "Shieldman",
       "NameKr": "방패병",
       "Description": "높은 방어력을 가진 탱커 유닛",
@@ -66,7 +66,7 @@
     {
       "ID": "uUnTp004",
       "UnitTypeID": "unTp004",
-      "DomainID": "do001",
+      "DomainID": "do007",
       "NameEn": "Archer",
       "NameKr": "궁병",
       "Description": "장거리 공격을 전문으로 하는 유닛",
@@ -87,7 +87,7 @@
     {
       "ID": "uUnTp005",
       "UnitTypeID": "unTp005",
-      "DomainID": "do001",
+      "DomainID": "do007",
       "NameEn": "Crossbowman",
       "NameKr": "석궁병",
       "Description": "강력한 단발 공격을 가진 원거리 유닛",

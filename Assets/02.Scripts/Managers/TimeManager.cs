@@ -19,7 +19,7 @@ public class TimeManager : IManager
     
     [HideInInspector]
     // 대기열 컬렉션 만들기
-    public List<Event> scheduledEvents;
+    public List<EventData> scheduledEvents;
     
     public void Initialize()
     {
@@ -30,12 +30,12 @@ public class TimeManager : IManager
         currentYear = 1;
         currentMonth = 1;
         currentDay = 1;
-        scheduledEvents = new List<Event>();
+        scheduledEvents = new List<EventData>();
         eventInfo = LocatorManager.Instance.dataManager.eventInfo;
     }
 
     // scheduledEvent에 이벤트를 등록하는 모든행위에 반드시 수반되어야 하는 메서드
-    public void AddEventToTimeline(int eventID)
+    public void AddEventToTimeline(string eventID)
     {
         // TODO: 타임라인 리스트?딕셔너리?에 이벤트발생 시 해당이벤트 넣어주는 로직. param을 뭐로 설정할지 헷갈림
         // TODO: DueDate랑 같이 해당 이벤트 대기열 컬렉션에 삽입해줘야댐
@@ -52,7 +52,7 @@ public class TimeManager : IManager
     }
     
     // 플레이어가 이벤트 발생 시 스케쥴이벤트리스트에 등록및 예정종료일을 결정하는 메서드
-    private void AddEventWithDueDate(int eventID)
+    private void AddEventWithDueDate(string eventID)
     {
         int? _dueDate = null;
         
@@ -72,7 +72,7 @@ public class TimeManager : IManager
                 // 수정 구분선
                 
                 string jsonString = JsonConvert.SerializeObject(eventInfo.Data.Event[i]);
-                Event newEvent = JsonConvert.DeserializeObject<Event>(jsonString);
+                EventData newEvent = JsonConvert.DeserializeObject<EventData>(jsonString);
                 _dueDate = Random.Range(newEvent.MinClearTime, newEvent.MaxClearTime);
                 newEvent.DueDate = _dueDate.Value;
                 scheduledEvents.Add(newEvent);
@@ -157,9 +157,9 @@ public class TimeManager : IManager
     }
     
     // 아래는 퀵정렬을 위한 메서드들임 Partion~QuickSort까지
-    private int Partion(List<Event> events, int low, int high)
+    private int Partion(List<EventData> events, int low, int high)
     {
-        Event pivot = events[high];
+        EventData pivot = events[high];
         int i = low - 1;
 
         for (int j = low; j < high; j++)
@@ -174,14 +174,14 @@ public class TimeManager : IManager
         return i + 1;
     }
 
-    private void Swap(List<Event> events, int i, int j)
+    private void Swap(List<EventData> events, int i, int j)
     {
-        Event temp = events[i];
+        EventData temp = events[i];
         events[i] = events[j];
         events[j] = temp;
     }
 
-    private void QuickSort(List<Event> events, int low, int high)
+    private void QuickSort(List<EventData> events, int low, int high)
     {
         if (low < high)
         {
