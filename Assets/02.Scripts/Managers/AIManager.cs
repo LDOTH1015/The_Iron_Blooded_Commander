@@ -34,7 +34,7 @@ public class AIManager : MonoSingleton<AIManager>
 
     private void Start()
     {
-        InitializeAIUnits();
+        //InitializeAIUnits();
     }
 
     public void InitializeAIUnits()
