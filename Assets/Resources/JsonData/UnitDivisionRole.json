@@ -1,44 +1,49 @@
 ﻿{
   "UnitDivisionRole": [
     {
-      "ID": 2200,
-      "UnitDivisionID": "2200",
-      "Name": "부대 임무 이름 1",
-      "Description": "더미데이터",
+      "ID": "udr001",
+      "UnitDivisionID": "ud001",
+      "Name": "라인 유지A",
+      "Description": "라인 유지A입니다.",
       "RoleID": "Maintainline",
-      "Condition": 30
+      "Condition": 30,
+      "SupportUnit": ""
     },
     {
-      "ID": 2201,
-      "UnitDivisionID": "2201",
-      "Name": "부대 임무 이름 2",
-      "Description": "더미데이터",
+      "ID": "udr002",
+      "UnitDivisionID": "ud002",
+      "Name": "돌진A",
+      "Description": "돌진A입니다.",
       "RoleID": "Rush",
-      "Condition": 20
+      "Condition": 20,
+      "SupportUnit": ""
     },
     {
-      "ID": 2202,
-      "UnitDivisionID": "2202",
-      "Name": "부대 임무 이름 3",
-      "Description": "더미데이터",
+      "ID": "udr003",
+      "UnitDivisionID": "ud003",
+      "Name": "예비대A",
+      "Description": "예비대A입니다.",
       "RoleID": "ReserveUnit",
-      "Condition": 25
+      "Condition": 25,
+      "SupportUnit": "ud001"
     },
     {
-      "ID": 2203,
-      "UnitDivisionID": "2203",
-      "Name": "부대 임무 이름 4",
-      "Description": "더미데이터",
+      "ID": "udr004",
+      "UnitDivisionID": "ud004",
+      "Name": "라인 유지B",
+      "Description": "라인 유지B입니다.",
       "RoleID": "Maintainline",
-      "Condition": 34
+      "Condition": 34,
+      "SupportUnit": ""
     },
     {
-      "ID": 2204,
-      "UnitDivisionID": "2204",
-      "Name": "부대 임무 이름 5",
-      "Description": "더미데이터",
+      "ID": "udr005",
+      "UnitDivisionID": "ud005",
+      "Name": "돌진B",
+      "Description": "돌진B입니다.",
       "RoleID": "Rush",
-      "Condition": 20
+      "Condition": 20,
+      "SupportUnit": ""
     }
   ]
 }

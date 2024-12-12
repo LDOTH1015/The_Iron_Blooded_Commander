@@ -1,9 +1,9 @@
 ﻿{
   "UserKnight": [
     {
-      "ID": "1000",
-      "KnightID": "1000",
-      "UserID": "1000",
+      "ID": "uKn001",
+      "KnightID": "knDe001",
+      "DomainID": "do001",
       "NameEn": "KingArthur",
       "NameKr": "아서왕",
       "Description": "전설적인 원탁의 기사 리더",
@@ -27,9 +27,9 @@
       "ExperienceWeighted": 2.0
     },
     {
-      "ID": "1001",
-      "KnightID": "1001",
-      "UserID": "1001",
+      "ID": "uKn002",
+      "KnightID": "knDe002",
+      "DomainID": "do001",
       "NameEn": "Lancelot",
       "NameKr": "랜슬롯",
       "Description": "아서왕의 가장 신뢰받는 기사",
@@ -53,9 +53,9 @@
       "ExperienceWeighted": 1.8
     },
     {
-      "ID": "1002",
-      "KnightID": "1002",
-      "UserID": "1002",
+      "ID": "uKn003",
+      "KnightID": "knDe003",
+      "DomainID": "do001",
       "NameEn": "Gawain",
       "NameKr": "가웨인",
       "Description": "태양 아래에서 가장 강력한 기사",
@@ -79,9 +79,9 @@
       "ExperienceWeighted": 1.7
     },
     {
-      "ID": "1003",
-      "KnightID": "1003",
-      "UserID": "1003",
+      "ID": "uKn004",
+      "KnightID": "knDe004",
+      "DomainID": "do001",
       "NameEn": "Percival",
       "NameKr": "퍼시발",
       "Description": "성배를 찾아 떠난 순수한 기사",
@@ -105,9 +105,9 @@
       "ExperienceWeighted": 1.6
     },
     {
-      "ID": "1004",
-      "KnightID": "1004",
-      "UserID": "1004",
+      "ID": "uKn005",
+      "KnightID": "knDe005",
+      "DomainID": "do001",
       "NameEn": "Galahad",
       "NameKr": "갈라하드",
       "Description": "가장 순수하고 고결한 기사",
