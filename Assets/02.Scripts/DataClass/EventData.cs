@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 [Serializable]
-public class Event : IData
+public class EventData : IData
 {
     public string ID { get; set; }
     public string Name { get; set; }
@@ -18,7 +18,7 @@ public class Event : IData
 
 public class EventDataArray
 {
-    public List<Event> Event;
+    public List<EventData> Event;
 }
 
 public class EventInfo : AutoSave<EventDataArray>

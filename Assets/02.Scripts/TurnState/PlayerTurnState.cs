@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerTurnState : ITurnState
 {
     // TimeManager로부터 받는 종료된 이벤트 리스트
-    public List<Event> temptList = new List<Event>();
-    public List<Event> completedEvents = new List<Event>();
+    public List<EventData> temptList = new List<EventData>();
+    public List<EventData> completedEvents = new List<EventData>();
     public Dictionary<string, IEventHandler> eventHandlers;
 
     public bool isNextTurnBattle = false;
@@ -38,7 +38,7 @@ public class PlayerTurnState : ITurnState
         // 0. 플레이어턴에 맞는 UI켜기
         // 1. 타임매니저로부터 현재시간 받아와서 현재날짜 UI업데이트, 이벤트타임라인 일자수차감
         LocatorManager.Instance.timeManager.UpdateTimeline();
-        foreach (Event eventDataTable in temptList)
+        foreach (EventData eventDataTable in temptList)
         {
             completedEvents.Add(eventDataTable);
         }
@@ -114,7 +114,7 @@ public class PlayerTurnState : ITurnState
 
         for (int i = completedEvents.Count - 1; i >= 0; i--)
         {
-            Event currentEvent = completedEvents[i];
+            EventData currentEvent = completedEvents[i];
             if (eventHandlers.TryGetValue(currentEvent.ID, out IEventHandler handler))
             {
                 handler.Handle(currentEvent);
