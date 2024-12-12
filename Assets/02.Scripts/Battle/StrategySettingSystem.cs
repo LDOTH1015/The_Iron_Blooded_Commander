@@ -18,6 +18,9 @@ public class StrategySettingSystem : MonoBehaviour
 
     Strategy currentStrategy;
 
+    // 임시로 ui와 연결
+    public UI_StrategySetting uI_StrategySetting;
+
     public ArmyLord DomainArmyLord
     {
         get { return domainArmyLord; }
@@ -36,7 +39,13 @@ public class StrategySettingSystem : MonoBehaviour
     public List<ArmyStrategy> StrategyList
     {
         get { return strategyList; }
-        set { strategyList = value; }
+        private set { strategyList = value; }
+    }
+
+    public Strategy CurrentStrategy
+    {
+        get { return currentStrategy; }
+        private set { currentStrategy = value; }
     }
 
     private void Awake()
@@ -101,4 +110,13 @@ public class StrategySettingSystem : MonoBehaviour
 
     // UI의 반응과 연계하여 전략 설정 및 저장
 
+    private void Start()
+    {
+        List<KnightDefault> knightDataList = new List<KnightDefault>();
+        for (int i = 0; i < knightList.Count; i++)
+        {
+            knightDataList.Add(knightList[i].KnightData);
+        }
+        uI_StrategySetting.SetKnightData(knightDataList);
+    }
 }
