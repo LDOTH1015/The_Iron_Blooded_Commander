@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Strategy : IData
 {
     public string ID { get; set; }
-    public string UserID { get; set; }
+    public string DomainID { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
 }

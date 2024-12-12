@@ -1,3 +1,9 @@
 ﻿{
-  "Stage": []
+  "Stage": [
+    {
+      "ID": "sta001",
+      "DomainID": "",
+      "Round": ""
+    }
+  ]
 }
