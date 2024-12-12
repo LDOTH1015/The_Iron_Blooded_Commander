@@ -11,7 +11,7 @@ public class EventResult_evd000 : IEventHandler
 {
     public void Handle(EventData e)
     {
-        if (LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UserUnitType[0].ID == "uUnTp001" &&
+        if (LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UserUnitType[0].ID == "unTp001" &&
             LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UserUnitType[0].DomainID == "do007" )
         {
             LocatorManager.Instance.dataManager.userUnitTypeInfo.Data.UserUnitType[0].TrainingLevel += (int)e.ResultValue;
