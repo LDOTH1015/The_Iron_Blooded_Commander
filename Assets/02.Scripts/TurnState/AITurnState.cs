@@ -39,6 +39,7 @@ public class AITurnState : ITurnState
     }
     
     // TODO: 턴사이사이 날짜를 고려해서 업데이트가 이뤄져야함.
+    // AI도메인 순회도 현재진행중인 데이터테이블을 순회해야함.
     private void AIDomainStateUpdate()
     {
         for (int i = 1; i < LocatorManager.Instance.dataManager.domainInfo.Data.Domain.Count; i++)
@@ -51,6 +52,7 @@ public class AITurnState : ITurnState
         }
     }
     
+    // AI도메인 순회도 현재진행중인 데이터테이블을 순회해야함.
     private void ConsiderToAttackPlayer()
     {
         // 비교 후 침공을 결정함 ->(만약 침공을 결정했다면)이벤트 두개 연달아 등록 (침공을 결정한 ai의 DomainID를 ResultValue)
@@ -88,6 +90,4 @@ public class AITurnState : ITurnState
             }
         }
     }
-
-
 }
