@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+using Random = UnityEngine.Random;
 
 public class TimeManager : IManager
 {
@@ -20,6 +22,8 @@ public class TimeManager : IManager
     [HideInInspector]
     // 대기열 컬렉션 만들기
     public List<EventData> scheduledEvents;
+
+    public event Action OnDateChanged;
     
     public void Initialize()
     {
@@ -107,7 +111,7 @@ public class TimeManager : IManager
             playerCurrentDate += elapsedTime;
             Debug.Log($"지난 경과일 {elapsedTime}. 업데이트경과일{playerCurrentDate}");
             // 더한 날짜를 기준으로 년월일 정보 업데이트
-            UpdateDateForUI(playerCurrentDate);
+            UpdateDate(playerCurrentDate);
             
             for (int i = scheduledEvents.Count-1; i>=0 ; i--)
             {
@@ -127,7 +131,7 @@ public class TimeManager : IManager
     }
     
     // 표시 날짜 계산 메서드
-    private void UpdateDateForUI(int currentDate)
+    private void UpdateDate(int currentDate)
     {
         // 년 계산(일단 1년차부터 시작)
         currentYear = (currentDate / 365) + 1;
@@ -154,6 +158,7 @@ public class TimeManager : IManager
         currentMonth = month;
         int day = _remainingDays + 1; // 1일부터 시작, 위에서 일자계산 까지 되있어서 +1만해주면됨
         currentDay = day;
+        OnDateChanged?.Invoke();
     }
     
     // 아래는 퀵정렬을 위한 메서드들임 Partion~QuickSort까지
