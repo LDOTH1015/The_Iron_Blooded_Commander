@@ -42,7 +42,7 @@ public class AITurnState : ITurnState
     // AI도메인 순회도 현재진행중인 데이터테이블을 순회해야함.
     private void AIDomainStateUpdate()
     {
-        for (int i = 6; i < 12; i++)
+        for (int i = 7; i < 12; i++)
         {
             if (LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].State == "Ai")
             {

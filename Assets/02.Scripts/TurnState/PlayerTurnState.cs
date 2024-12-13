@@ -10,26 +10,30 @@ public class PlayerTurnState : ITurnState
     public List<EventData> temptList = new List<EventData>();
     public List<EventData> completedEvents = new List<EventData>();
     public Dictionary<string, IEventHandler> eventHandlers;
+    
+    // 해당 턴에 종료된 이벤트 갯수 UI에 표현하기 위한 변수
+    public int completedEventsCount;
 
     public bool isLoadingOn;
     public bool isWarRumorEvent = false;
 
-    public event Action<bool> OnNextButtonChanged;
+    public event Action OnDomainChanged;
     
-    private bool isNextTurnBattl;
+    public event Action<bool> OnNextButtonChanged;
+    private bool isNextTurnBattle;
     public bool IsNextTurnBattle
     {
-        get => isNextTurnBattl;
+        get => isNextTurnBattle;
         set
         {
-            if (isNextTurnBattl != value && SceneManager.GetActiveScene().name == "Test_SOLS")
+            if (isNextTurnBattle != value && SceneManager.GetActiveScene().name == "Test_SOLS")
             {
-                isNextTurnBattl = value;
-                OnNextButtonChanged?.Invoke(isNextTurnBattl);
+                isNextTurnBattle = value;
+                OnNextButtonChanged?.Invoke(isNextTurnBattle);
             }
-            else if (isNextTurnBattl != value)
+            else if (isNextTurnBattle != value)
             {
-                isNextTurnBattl = value;
+                isNextTurnBattle = value;
             }
         }
     }
@@ -56,6 +60,14 @@ public class PlayerTurnState : ITurnState
     {
         // TODO: 플레이어 턴 진입 시 
         // 0. 플레이어턴에 맞는 UI켜기
+        UIManager.Instance.Show<UI_Domain>();
+        UIManager.Instance.Show<UI_NextProgressBtn>();
+    }
+    
+    
+    
+    public void Execute()
+    {
         // 1. 타임매니저로부터 현재시간 받아와서 현재날짜 UI업데이트, 이벤트타임라인 일자수차감
         LocatorManager.Instance.timeManager.UpdateTimeline();
         foreach (EventData eventDataTable in temptList)
@@ -70,14 +82,6 @@ public class PlayerTurnState : ITurnState
         isLoadingOn = false;
         // 3. 타임매니저로부터 다음이벤트가 배틀이면 IsNextTurnBattle true업데이트해줘야함
         UpdateEventsResult();
-        
-    }
-    
-    
-    
-    public void Execute()
-    {
-        // 현재 내용 없음
     }
     
     // 턴진행버튼은 Exit()랑 연결해야함
@@ -88,25 +92,35 @@ public class PlayerTurnState : ITurnState
         if (!IsNextTurnBattle)
         {
             UIManager.Instance.Show<pnl_Loading>();
+            UIManager.Instance.Hide<UI_Domain>();
+            UIManager.Instance.Hide<UI_NextProgressBtn>();
             LocatorManager.Instance.turnManager.TransitionTo(LocatorManager.Instance.turnManager.aiTurnState);
             
         }
         // IsNextTurnBattle == true일때,
         else
         {
+            UIManager.Instance.Hide<UI_Domain>();
+            UIManager.Instance.Hide<UI_NextProgressBtn>();
             LocatorManager.Instance.turnManager.TransitionTo(LocatorManager.Instance.turnManager.battleTurnState);
         }
     }
     
     private void UpdateEventsResult()
     {
+        int tempCount = completedEvents.Count;
+        completedEventsCount = tempCount;
+        
         for (int i = completedEvents.Count - 1; i >= 0; i--)
         {
+            if (completedEvents.Count == 0)
+                break;
             EventData currentEvent = completedEvents[i];
             if (eventHandlers.TryGetValue(currentEvent.ID, out IEventHandler handler))
             {
                 handler.Handle(currentEvent);
                 completedEvents.RemoveAt(i);
+                OnDomainChanged?.Invoke();
             }
         }
     }

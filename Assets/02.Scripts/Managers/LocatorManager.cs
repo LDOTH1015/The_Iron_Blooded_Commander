@@ -13,10 +13,12 @@ public interface IManager
 public class LocatorManager : MonoSingleton<LocatorManager>
 {
     public DataManager dataManager = new DataManager();
+    public TimeManager timeManager = new TimeManager();
     public TurnManager turnManager = new TurnManager();
     public BattleManager battleManager = new BattleManager();
     public SoundManager soundManager = new SoundManager();
-    public TimeManager timeManager = new TimeManager();
+    
+    public Dictionary<string, object> playerData = new Dictionary<string, object>();
     
     public override void Awake()
     {
@@ -29,6 +31,7 @@ public class LocatorManager : MonoSingleton<LocatorManager>
         turnManager.Initialize();
         // battleManager.Initialize();
         // soundManager.Initialize();
+        PlayerDataSetting();
     }
     
     // 각 매니저들은 MonoBehaviour를 상속받고있지 않으므로 MonoBehaviour에 관한 함수들은 
@@ -41,5 +44,22 @@ public class LocatorManager : MonoSingleton<LocatorManager>
     {
         StartCoroutine(coroutine);
     }
-    
+
+    public void PlayerDataSetting()
+    {
+        foreach (Domain data in dataManager.domainInfo.Data.Domain)
+        {
+            if(data.UserID.Equals("nowPlay")&& data.State.Equals("Player"))
+            {
+                playerData.Add("DomainID", data.ID);
+            }
+        }
+        foreach (UserUnitType data in dataManager.userUnitTypeInfo.Data.UserUnitType)
+        {
+            if (data.DomainID.Equals(playerData["DomainID"].ToString()))
+            {
+                playerData.Add(data.NameEn, data);
+            }
+        }
+    }
 }

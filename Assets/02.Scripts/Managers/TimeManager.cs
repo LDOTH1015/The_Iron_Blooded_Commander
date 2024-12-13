@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+using Random = UnityEngine.Random;
 
 public class TimeManager : IManager
 {
@@ -19,7 +21,9 @@ public class TimeManager : IManager
     
     [HideInInspector]
     // 대기열 컬렉션 만들기
-    public List<EventData> scheduledEvents;
+    public List<EventData> scheduledEvents = new List<EventData>();
+
+    public event Action OnDateChanged;
     
     public void Initialize()
     {
@@ -30,7 +34,6 @@ public class TimeManager : IManager
         currentYear = 1;
         currentMonth = 1;
         currentDay = 1;
-        scheduledEvents = new List<EventData>();
         eventInfo = LocatorManager.Instance.dataManager.eventInfo;
     }
 
@@ -100,14 +103,14 @@ public class TimeManager : IManager
     // 예정된 이벤트들의 결과를 UI에 표시해주기(이건 여기서 할 일아님, PlayerState나 UI로직에서 구현)
     public void UpdateTimeline()
     {
-        if (scheduledEvents.Count > 0)
+        if (scheduledEvents.Count != null && scheduledEvents.Count> 0)
         {
             // [0]번째 이벤트의 DueDate만큼 playerCurrentDate를 더해주기
             var elapsedTime = scheduledEvents[0].DueDate;
             playerCurrentDate += elapsedTime;
             Debug.Log($"지난 경과일 {elapsedTime}. 업데이트경과일{playerCurrentDate}");
             // 더한 날짜를 기준으로 년월일 정보 업데이트
-            UpdateDateForUI(playerCurrentDate);
+            UpdateDate(playerCurrentDate);
             
             for (int i = scheduledEvents.Count-1; i>=0 ; i--)
             {
@@ -127,7 +130,7 @@ public class TimeManager : IManager
     }
     
     // 표시 날짜 계산 메서드
-    private void UpdateDateForUI(int currentDate)
+    private void UpdateDate(int currentDate)
     {
         // 년 계산(일단 1년차부터 시작)
         currentYear = (currentDate / 365) + 1;
@@ -154,6 +157,7 @@ public class TimeManager : IManager
         currentMonth = month;
         int day = _remainingDays + 1; // 1일부터 시작, 위에서 일자계산 까지 되있어서 +1만해주면됨
         currentDay = day;
+        OnDateChanged?.Invoke();
     }
     
     // 아래는 퀵정렬을 위한 메서드들임 Partion~QuickSort까지
