@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class UI_NextProgressBtn : UIBase, IPointerEnterHandler, IPointerExitHandler
 {
     private Button button;
-    private Image btn_NextTurn;
-    private Image btn_BattleTurn;
+    private GameObject btn_NextTurn;
+    private GameObject btn_BattleTurn;
     private Image btn_ProgressTxtFrame;
     private Image btn_NextTurnTxt;
     private Image btn_BattleTurnTxt;
@@ -17,8 +17,8 @@ public class UI_NextProgressBtn : UIBase, IPointerEnterHandler, IPointerExitHand
     {
         base.Awake();
         button = GetComponent<Button>();
-        btn_NextTurn = transform.GetChild(0).gameObject.GetComponent<Image>();
-        btn_BattleTurn = transform.GetChild(1).gameObject.GetComponent<Image>();
+        btn_BattleTurn = transform.GetChild(0).gameObject;
+        btn_NextTurn = transform.GetChild(1).gameObject;
         btn_ProgressTxtFrame = transform.GetChild(2).gameObject.GetComponent<Image>();
         btn_NextTurnTxt = transform.GetChild(3).gameObject.GetComponent<Image>();
         btn_BattleTurnTxt = transform.GetChild(4).gameObject.GetComponent<Image>();
@@ -27,12 +27,12 @@ public class UI_NextProgressBtn : UIBase, IPointerEnterHandler, IPointerExitHand
     private void Start()
     {
         button.onClick.AddListener(OnButtonClicked);
-        LocatorManager.Instance.turnManager.playerTurnState.OnNextButtonChanged += UpdateButtonsImage;
-        btn_NextTurn.enabled = true;
-        btn_BattleTurn.enabled = false;
+        btn_NextTurn.SetActive(true);
+        btn_BattleTurn.SetActive(false);
         btn_ProgressTxtFrame.enabled = false;
         btn_NextTurnTxt.enabled = false;
         btn_BattleTurnTxt.enabled = false;
+        LocatorManager.Instance.turnManager.playerTurnState.OnNextButtonChanged += UpdateButtonsImage;
     }
 
     private void OnDestroy()
@@ -42,16 +42,11 @@ public class UI_NextProgressBtn : UIBase, IPointerEnterHandler, IPointerExitHand
 
     private void UpdateButtonsImage(bool isNextTurnBattle)
     {
-        if (isNextTurnBattle)
-        {
-            btn_NextTurn.enabled = false;
-            btn_BattleTurn.enabled = true;
-        }
-        else
-        {
-            btn_NextTurn.enabled = true;
-            btn_BattleTurn.enabled = false;
-        }
+        Debug.Log($"UpdateButtonsImage called with isNextTurnBattle: {isNextTurnBattle}");
+
+        btn_NextTurn.SetActive(!isNextTurnBattle);
+        btn_BattleTurn.SetActive(isNextTurnBattle);
+        Canvas.ForceUpdateCanvases();
     }
 
     private void OnButtonClicked()

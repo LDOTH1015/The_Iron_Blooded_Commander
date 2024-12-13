@@ -9,15 +9,17 @@ public class TurnManager : IManager
     private ITurnState currentTurnState;
     private ITurnState previousTurnState;
     private ITurnState nextTurnState;
-    
-    
-    public void Initialize()
+
+    public TurnManager()
     {
         playerTurnState = new PlayerTurnState();
         aiTurnState = new AITurnState();
         worldTurnState = new WorldTurnState();
         battleTurnState = new BattleTurnState();
-        
+    }
+    
+    public void Initialize()
+    {
         InitTurn(playerTurnState);
     }
 

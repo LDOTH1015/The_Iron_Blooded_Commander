@@ -52,7 +52,7 @@ public class UIManager : MonoSingleton<UIManager>
         return (T)_ui; // 해당 UI의 형태로 형변환 반환타입 챙겨주는거 
     }
 
-    private void Hide<T>() where T : UIBase
+    public void Hide<T>() where T : UIBase
     {
         string _uiName = typeof(T).ToString();
         Hide(_uiName);

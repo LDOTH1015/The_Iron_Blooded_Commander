@@ -13,10 +13,10 @@ public interface IManager
 public class LocatorManager : MonoSingleton<LocatorManager>
 {
     public DataManager dataManager = new DataManager();
+    public TimeManager timeManager = new TimeManager();
     public TurnManager turnManager = new TurnManager();
     public BattleManager battleManager = new BattleManager();
     public SoundManager soundManager = new SoundManager();
-    public TimeManager timeManager = new TimeManager();
     
     public Dictionary<string, object> playerData = new Dictionary<string, object>();
     

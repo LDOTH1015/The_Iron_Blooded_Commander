@@ -5,8 +5,4 @@ using UnityEngine;
 
 public class UI_Domain : UIBase
 {
-    private void Start()
-    {
-        UIManager.Instance.Show<UI_NextProgressBtn>();
-    }
 }

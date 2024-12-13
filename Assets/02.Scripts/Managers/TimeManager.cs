@@ -21,7 +21,7 @@ public class TimeManager : IManager
     
     [HideInInspector]
     // 대기열 컬렉션 만들기
-    public List<EventData> scheduledEvents;
+    public List<EventData> scheduledEvents = new List<EventData>();
 
     public event Action OnDateChanged;
     
@@ -34,7 +34,6 @@ public class TimeManager : IManager
         currentYear = 1;
         currentMonth = 1;
         currentDay = 1;
-        scheduledEvents = new List<EventData>();
         eventInfo = LocatorManager.Instance.dataManager.eventInfo;
     }
 
@@ -104,7 +103,7 @@ public class TimeManager : IManager
     // 예정된 이벤트들의 결과를 UI에 표시해주기(이건 여기서 할 일아님, PlayerState나 UI로직에서 구현)
     public void UpdateTimeline()
     {
-        if (scheduledEvents.Count > 0)
+        if (scheduledEvents.Count != null && scheduledEvents.Count> 0)
         {
             // [0]번째 이벤트의 DueDate만큼 playerCurrentDate를 더해주기
             var elapsedTime = scheduledEvents[0].DueDate;

@@ -16,8 +16,9 @@ public class UI_DomainStateBar : UIBase
     private TextMeshProUGUI textFood;
     private TextMeshProUGUI textCaptivity;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         InitStateBar();
     }
 
