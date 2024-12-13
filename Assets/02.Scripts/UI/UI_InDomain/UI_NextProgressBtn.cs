@@ -37,7 +37,8 @@ public class UI_NextProgressBtn : UIBase, IPointerEnterHandler, IPointerExitHand
 
     private void OnDestroy()
     {
-        LocatorManager.Instance.turnManager.playerTurnState.OnNextButtonChanged -= UpdateButtonsImage;
+        if(LocatorManager.Instance != null)
+            LocatorManager.Instance.turnManager.playerTurnState.OnNextButtonChanged -= UpdateButtonsImage;
     }
 
     private void UpdateButtonsImage(bool isNextTurnBattle)

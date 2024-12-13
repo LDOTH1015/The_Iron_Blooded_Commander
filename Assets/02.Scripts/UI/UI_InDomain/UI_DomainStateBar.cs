@@ -44,11 +44,11 @@ public class UI_DomainStateBar : UIBase
 
     private void OnDestroy()
     {
-        var timeManager = LocatorManager.Instance.timeManager;
-        timeManager.OnDateChanged -= UpdateTextDate;
+        if(LocatorManager.Instance != null)
+            LocatorManager.Instance.timeManager.OnDateChanged -= UpdateTextDate;
         
-        var turnManager = LocatorManager.Instance.turnManager;
-        turnManager.playerTurnState.OnDomainChanged -= UpdateDomainState;
+        if(LocatorManager.Instance != null)
+            LocatorManager.Instance.turnManager.playerTurnState.OnDomainChanged -= UpdateDomainState;
     }
 
     private void UpdateTextDate()

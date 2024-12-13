@@ -49,7 +49,7 @@ public class LocatorManager : MonoSingleton<LocatorManager>
     {
         foreach (Domain data in dataManager.domainInfo.Data.Domain)
         {
-            if(data.UserID.Equals("nowPlayer")&& data.State.Equals("Player"))
+            if(data.UserID.Equals("nowPlay")&& data.State.Equals("Player"))
             {
                 playerData.Add("DomainID", data.ID);
             }
