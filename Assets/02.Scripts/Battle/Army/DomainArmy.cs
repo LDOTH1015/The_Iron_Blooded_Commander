@@ -40,7 +40,7 @@ public class DomainArmy : MonoBehaviour
     }
     public List<ArmyStrategy> StrategyList {
         get { return strategyList; } 
-        set { strategyList = value; }
+        private set { strategyList = value; }
     }
     public List<UnitDivisionRole> UnitDivisionRoleDataList
     {
