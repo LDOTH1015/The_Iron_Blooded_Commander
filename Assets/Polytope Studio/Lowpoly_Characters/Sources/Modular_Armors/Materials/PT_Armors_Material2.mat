@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PT_Armors_Material
+  m_Name: PT_Armors_Material2
   m_Shader: {fileID: 4800000, guid: 66cf399cd52203c4685e11681d535f09, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -81,27 +81,27 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _EYESSMOOTHNESS: 0.595
+    - _EYESSMOOTHNESS: 0.486
     - _EnvironmentReflections: 1
     - _GEMS1SMOOTHNESS: 1
     - _GEMS2SMOOTHNESS: 0
     - _GEMS3SMOOTHNESS: 0
-    - _HAIRSMOOTHNESS: 0.396
+    - _HAIRSMOOTHNESS: 0.488
     - _LEATHER1SMOOTHNESS: 0.3
     - _LEATHER2SMOOTHNESS: 0.3
-    - _LEATHER3SMOOTHNESS: 0.726
-    - _LIPSSMOOTHNESS: 0
-    - _METAL1METALLIC: 0.029
+    - _LEATHER3SMOOTHNESS: 0.3
+    - _LIPSSMOOTHNESS: 0.576
+    - _METAL1METALLIC: 0
     - _METAL1SMOOTHNESS: 0.068
-    - _METAL2METALLIC: 0.38
+    - _METAL2METALLIC: 0.2
     - _METAL2SMOOTHNESS: 0
-    - _METAL3METALLIC: 0.67
+    - _METAL3METALLIC: 0.65
     - _METAL3SMOOTHNESS: 0.7
     - _MetalicOn: 1
     - _OCCLUSION: 0.5
     - _ReceiveShadows: 1
     - _SCARSSMOOTHNESS: 0
-    - _SCLERASMOOTHNESS: 0.391
+    - _SCLERASMOOTHNESS: 0
     - _SKINSMOOTHNESS: 0.494
     - _SmoothnessOn: 1
     - _SpecularHighlights: 1
@@ -109,25 +109,25 @@ Material:
     m_Colors:
     - _CLOTH1COLOR: {r: 0.1465379, g: 0.282117, b: 0.3490566, a: 0}
     - _CLOTH2COLOR: {r: 1, g: 1, b: 1, a: 0}
-    - _CLOTH3COLOR: {r: 0.2735849, g: 0.26123032, b: 0.24648452, a: 0}
+    - _CLOTH3COLOR: {r: 1, g: 0.6987872, b: 0.2971698, a: 0}
     - _COATOFARMSCOLOR: {r: 1, g: 0, b: 0, a: 0}
-    - _EYESCOLOR: {r: 0.09518514, g: 0.20152429, b: 0.8773585, a: 1}
+    - _EYESCOLOR: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FEATHERS1COLOR: {r: 1, g: 1, b: 1, a: 0}
     - _FEATHERS2COLOR: {r: 0.6792453, g: 0, b: 0, a: 0}
-    - _FEATHERS3COLOR: {r: 0, g: 0.1793142, b: 0.7264151, a: 0}
-    - _GEMS1COLOR: {r: 0.0039215684, g: 0.13338861, b: 1, a: 0}
+    - _FEATHERS3COLOR: {r: 0.7254902, g: 0, b: 0.15466109, a: 0}
+    - _GEMS1COLOR: {r: 1, g: 1, b: 1, a: 0}
     - _GEMS2COLOR: {r: 0.2023368, g: 0, b: 0.4339623, a: 0}
-    - _GEMS3COLOR: {r: 0, g: 0.1132075, b: 0.01206957, a: 0}
-    - _HAIRCOLOR: {r: 0.9528302, g: 0.8399191, b: 0.13932894, a: 0}
+    - _GEMS3COLOR: {r: 0, g: 1, b: 0.10344839, a: 0}
+    - _HAIRCOLOR: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 0}
     - _LEATHER1COLOR: {r: 1, g: 1, b: 1, a: 1}
     - _LEATHER2COLOR: {r: 1, g: 1, b: 1, a: 1}
-    - _LEATHER3COLOR: {r: 0, g: 0.2178235, b: 1, a: 1}
-    - _LIPSCOLOR: {r: 0.9622642, g: 0.748932, b: 0.748932, a: 0}
+    - _LEATHER3COLOR: {r: 1, g: 0, b: 0.09565163, a: 1}
+    - _LIPSCOLOR: {r: 0.5471698, g: 0.36908153, b: 0.36908153, a: 0}
     - _METAL1COLOR: {r: 0, g: 0, b: 0, a: 0}
-    - _METAL2COLOR: {r: 0.4674706, g: 0.4677705, b: 0.5188679, a: 0}
-    - _METAL3COLOR: {r: 0, g: 0, b: 1, a: 0}
+    - _METAL2COLOR: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0}
+    - _METAL3COLOR: {r: 1, g: 0, b: 0.116942406, a: 0}
     - _SCARSCOLOR: {r: 0.8018868, g: 0.69062406, b: 0.6543699, a: 0}
-    - _SCLERACOLOR: {r: 0.9622642, g: 0.59460664, b: 0.59460664, a: 0}
-    - _SKINCOLOR: {r: 1, g: 0.8443396, b: 0.8443396, a: 0}
+    - _SCLERACOLOR: {r: 0.9433962, g: 0.88554645, b: 0.88554645, a: 0}
+    - _SKINCOLOR: {r: 0.7830189, g: 0.60942507, b: 0.60942507, a: 0}
   m_BuildTextureStacks: []
