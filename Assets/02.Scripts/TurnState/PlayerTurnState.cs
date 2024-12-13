@@ -10,14 +10,17 @@ public class PlayerTurnState : ITurnState
     public List<EventData> temptList = new List<EventData>();
     public List<EventData> completedEvents = new List<EventData>();
     public Dictionary<string, IEventHandler> eventHandlers;
+    
+    // 해당 턴에 종료된 이벤트 갯수 UI에 표현하기 위한 변수
+    public int completedEventsCount;
 
     public bool isLoadingOn;
     public bool isWarRumorEvent = false;
 
-    public event Action<bool> OnNextButtonChanged;
     public event Action OnDomainChanged;
     
-    private bool isNextTurnBattl;
+    public event Action<bool> OnNextButtonChanged;
+    private bool isNextTurnBattl = false;
     public bool IsNextTurnBattle
     {
         get => isNextTurnBattl;
@@ -57,6 +60,7 @@ public class PlayerTurnState : ITurnState
     {
         // TODO: 플레이어 턴 진입 시 
         // 0. 플레이어턴에 맞는 UI켜기
+        UIManager.Instance.Show<UI_Domain>();
         // 1. 타임매니저로부터 현재시간 받아와서 현재날짜 UI업데이트, 이벤트타임라인 일자수차감
         LocatorManager.Instance.timeManager.UpdateTimeline();
         foreach (EventData eventDataTable in temptList)
@@ -101,6 +105,9 @@ public class PlayerTurnState : ITurnState
     
     private void UpdateEventsResult()
     {
+        int tempCount = completedEvents.Count;
+        completedEventsCount = tempCount;
+        
         for (int i = completedEvents.Count - 1; i >= 0; i--)
         {
             EventData currentEvent = completedEvents[i];
