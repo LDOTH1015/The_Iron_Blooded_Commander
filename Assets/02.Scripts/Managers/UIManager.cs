@@ -8,7 +8,7 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] private Transform canvas;
     
     [Header("Canvas Scaler Size")]
-    public static float screenWidth = 1980;
+    public static float screenWidth = 1920;
     public static float screenHeight = 1080;
     
     private List<UIBase> uiList = new List<UIBase>();
