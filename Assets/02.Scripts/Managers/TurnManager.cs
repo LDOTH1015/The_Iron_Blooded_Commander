@@ -1,4 +1,7 @@
 
+using System.Collections;
+using UnityEngine;
+
 public class TurnManager : IManager
 {
     public PlayerTurnState playerTurnState;
@@ -9,6 +12,8 @@ public class TurnManager : IManager
     private ITurnState currentTurnState;
     private ITurnState previousTurnState;
     private ITurnState nextTurnState;
+    
+    private WaitForSeconds waitForSeconds = new WaitForSeconds(0.5f);
 
     public TurnManager()
     {
@@ -32,19 +37,20 @@ public class TurnManager : IManager
         currentTurnState = currentTurn;
         
         currentTurnState.Enter();
-        
-        ExecuteTurn(currentTurnState);
+        LocatorManager.Instance.StartCoroutine(ExecuteTurnWithDelay(currentTurn));
     }
 
+    private IEnumerator ExecuteTurnWithDelay(ITurnState currentTurn)
+    {
+        yield return waitForSeconds;
+        ExecuteTurn(currentTurn);
+    }
+    
     private void ExecuteTurn(ITurnState currentTurn)
     {
         if (currentTurnState == currentTurn)
         {
             currentTurn.Execute();
-        }
-        else
-        {
-            InitTurn(currentTurn);
         }
     }
     

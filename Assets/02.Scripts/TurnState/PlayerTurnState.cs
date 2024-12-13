@@ -26,7 +26,7 @@ public class PlayerTurnState : ITurnState
         get => isNextTurnBattle;
         set
         {
-            if (isNextTurnBattle != value && SceneManager.GetActiveScene().name == "Test_SOLS")
+            if (isNextTurnBattle != value && SceneManager.GetActiveScene().name == "DomainScene")
             {
                 isNextTurnBattle = value;
                 OnNextButtonChanged?.Invoke(isNextTurnBattle);
@@ -63,8 +63,6 @@ public class PlayerTurnState : ITurnState
         UIManager.Instance.Show<UI_Domain>();
         UIManager.Instance.Show<UI_NextProgressBtn>();
     }
-    
-    
     
     public void Execute()
     {
