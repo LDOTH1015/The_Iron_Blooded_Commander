@@ -10,7 +10,7 @@ public class UnitDivisionRole : IData
     public string Description { get; set; }
     public string RoleID { get; set; }
     public int Condition { get; set; }
-    public int SupportUnit { get; set; }
+    public string SupportUnit { get; set; }
 }
 
 

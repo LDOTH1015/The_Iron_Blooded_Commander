@@ -13,6 +13,9 @@ public class UI_StrategySetting : MonoBehaviour
 
     Camera cameraMapInspectionCamera;
 
+    [SerializeField] scrollView_OwnedKnights scrollViewOwnedKnights;
+
+
     private void Start()
     {
         cameraMapInspectionCamera = mapInspectionCamera.GetComponent<Camera>();
@@ -31,5 +34,10 @@ public class UI_StrategySetting : MonoBehaviour
         uiMapInspection.SetActive(true);
         uiStrategySetting.SetActive(false);
         DragAndDropManager.Instance.SetWorldDragCamera(cameraMapInspectionCamera);
+    }
+
+    public void SetKnightData(List<KnightDefault> knightDataLists)
+    {
+        scrollViewOwnedKnights.SetScrollView(knightDataLists);
     }
 }

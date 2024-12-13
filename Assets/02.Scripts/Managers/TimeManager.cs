@@ -35,7 +35,7 @@ public class TimeManager : IManager
     }
 
     // scheduledEvent에 이벤트를 등록하는 모든행위에 반드시 수반되어야 하는 메서드
-    public void AddEventToTimeline(int eventID)
+    public void AddEventToTimeline(string eventID)
     {
         // TODO: 타임라인 리스트?딕셔너리?에 이벤트발생 시 해당이벤트 넣어주는 로직. param을 뭐로 설정할지 헷갈림
         // TODO: DueDate랑 같이 해당 이벤트 대기열 컬렉션에 삽입해줘야댐
@@ -52,7 +52,7 @@ public class TimeManager : IManager
     }
     
     // 플레이어가 이벤트 발생 시 스케쥴이벤트리스트에 등록및 예정종료일을 결정하는 메서드
-    private void AddEventWithDueDate(int eventID)
+    private void AddEventWithDueDate(string eventID)
     {
         int? _dueDate = null;
         

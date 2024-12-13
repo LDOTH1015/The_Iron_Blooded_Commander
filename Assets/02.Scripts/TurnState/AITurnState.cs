@@ -39,18 +39,27 @@ public class AITurnState : ITurnState
     }
     
     // TODO: 턴사이사이 날짜를 고려해서 업데이트가 이뤄져야함.
+    // AI도메인 순회도 현재진행중인 데이터테이블을 순회해야함.
     private void AIDomainStateUpdate()
     {
-        for (int i = 1; i < LocatorManager.Instance.dataManager.domainInfo.Data.Domain.Count; i++)
+        for (int i = 6; i < 12; i++)
         {
-            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Food += Random.Range(-100, 100);
-            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Gold += Random.Range(-100, 100);
-            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Population += Random.Range(-50, 50);
-            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Steel += Random.Range(-50, 50);
-            LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Fame += Random.Range(-10, 10);
+            if (LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].State == "Ai")
+            {
+                LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Food += Random.Range(-100, 100);
+                LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Gold += Random.Range(-100, 100);
+                LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Population += Random.Range(-50, 50);
+                LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Steel += Random.Range(-50, 50);
+                LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Fame += Random.Range(-10, 10);    
+            }
+            else
+            {
+                Debug.Log("AI상태업데이트 불가, 순회문의 조건확인 바람");
+            }
         }
     }
     
+    // AI도메인 순회도 현재진행중인 데이터테이블을 순회해야함.
     private void ConsiderToAttackPlayer()
     {
         // 비교 후 침공을 결정함 ->(만약 침공을 결정했다면)이벤트 두개 연달아 등록 (침공을 결정한 ai의 DomainID를 ResultValue)
@@ -64,30 +73,30 @@ public class AITurnState : ITurnState
         // 8. 침략이 결정이 되면 이벤트 두개 연속등록(경고이벤트와 실제침공이벤트)
         // 9. Player를 공격할 병력을 설정하는 메서드,로직이 필요.
 
-        for (int i = 1; i < LocatorManager.Instance.dataManager.domainInfo.Data.Domain.Count; i++)
+        for (int i = 7; i < 12; i++)
         {
             // 가중치(이게 1.0을 넘어가면 침략결정 주사위굴림)
             float _weightFactor = 1.0f;
-            // 결정팩터(이게 0.5를 넘어가면 침략함)
-            float? _decisionFactor = null;
             
             // 현재 가중치 비교로직은 미구현
             
             // 6. 가중치가 1을 넘으면 주사위굴리기 → Random.Range(0.4, 1) 돌려서 값이 0.5를 넘어가면 침략결정!
             if (_weightFactor >= 1.0f)
             {
-                _decisionFactor = Random.Range(0.4f, 1.0f);
+                // 결정팩터(이게 0.5를 넘어가면 침략함)
+                float _decisionFactor = Random.Range(0.4f, 1.0f);
                 
                 // 8. 침략이 결정이 되면 이벤트 두개 연속등록(경고이벤트와 실제침공이벤트)
                 if (_decisionFactor >= 0.5f)
                 {
-                    LocatorManager.Instance.timeManager.AddEventToTimeline(4500);
-                    LocatorManager.Instance.timeManager.AddEventToTimeline(4501);
+                    LocatorManager.Instance.timeManager.AddEventToTimeline("evai000");
+                    LocatorManager.Instance.timeManager.AddEventToTimeline("evai001");
                     Debug.Log($"{LocatorManager.Instance.dataManager.domainInfo.Data.Domain[i].Name}가 침략이벤트 리스트에 넣엇음");
                 }
             }
         }
+        // TODO: 침공 결정됐으면 병력편성 결정 로직 필요함.
+        // 이 경우 상대 병력편성 규모데이터를 저장해두고 전달해줄 수 있어야함
+        // 병력편성 시 해당 AI의 병력을 현재병력에서 차감시켜야함
     }
-
-
 }

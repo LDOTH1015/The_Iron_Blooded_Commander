@@ -17,6 +17,5 @@ public class btn_EndBattle : UIBase
     private void OnButtonClicked()
     {
         LocatorManager.Instance.turnManager.battleTurnState.Exit();
-        SceneManager.LoadScene("Test_SOLS");
     }
 }
