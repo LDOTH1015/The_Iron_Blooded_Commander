@@ -15,6 +15,7 @@ public class PlayerTurnState : ITurnState
     public bool isWarRumorEvent = false;
 
     public event Action<bool> OnNextButtonChanged;
+    public event Action OnDomainChanged;
     
     private bool isNextTurnBattl;
     public bool IsNextTurnBattle
@@ -109,5 +110,7 @@ public class PlayerTurnState : ITurnState
                 completedEvents.RemoveAt(i);
             }
         }
+
+        OnDomainChanged?.Invoke();
     }
 }

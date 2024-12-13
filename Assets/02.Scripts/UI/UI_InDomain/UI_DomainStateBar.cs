@@ -35,17 +35,43 @@ public class UI_DomainStateBar : UIBase
         var timeManager = LocatorManager.Instance.timeManager;
         timeManager.OnDateChanged += UpdateTextDate;
         UpdateTextDate();
+        
+        var turnManager = LocatorManager.Instance.turnManager;
+        turnManager.playerTurnState.OnDomainChanged += UpdateDomainState;
+        UpdateDomainState();
     }
 
     private void OnDestroy()
     {
         var timeManager = LocatorManager.Instance.timeManager;
         timeManager.OnDateChanged -= UpdateTextDate;
+        
+        var turnManager = LocatorManager.Instance.turnManager;
+        turnManager.playerTurnState.OnDomainChanged -= UpdateDomainState;
     }
 
     private void UpdateTextDate()
     {
         var timeManager = LocatorManager.Instance.timeManager;
         textDate.text = $"{timeManager.currentYear}년{timeManager.currentMonth}월{timeManager.currentDay}일";
+    }
+
+    private void UpdateDomainState()
+    {
+        var dataManager = LocatorManager.Instance.dataManager;
+        if (dataManager.domainInfo.Data.Domain[6].State == "Player")
+        {
+            textPopulation.text = $"{dataManager.domainInfo.Data.Domain[6].Population}";
+            textPublicOpinion.text = $"{dataManager.domainInfo.Data.Domain[6].PublicOpinion}";
+            textFame.text = $"{dataManager.domainInfo.Data.Domain[6].Fame}";
+            textGold.text = $"{dataManager.domainInfo.Data.Domain[6].Gold}";
+            textSteel.text = $"{dataManager.domainInfo.Data.Domain[6].Steel}";
+            textFood.text = $"{dataManager.domainInfo.Data.Domain[6].Food}";
+            textCaptivity.text = $"{dataManager.domainInfo.Data.Domain[6].Captivity}";
+        }
+        else
+        {
+            Debug.Log("스테이트 바 도메인 인덱싱 잘못됨");
+        }
     }
 }
