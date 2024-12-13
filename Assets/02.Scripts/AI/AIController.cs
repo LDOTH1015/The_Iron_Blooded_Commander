@@ -15,7 +15,7 @@ public class AIController : MonoBehaviour
 
     private void OnDestroy()
     {
-        AIManager.Instance.UnregisterAIUnit(this);
+        //AIManager.Instance.UnregisterAIUnit(this);
     }
 
     public void Initialize(string name, int initialHealth, float attack)
