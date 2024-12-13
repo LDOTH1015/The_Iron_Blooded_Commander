@@ -10,6 +10,7 @@ public class UnitType : IData
     public string Description { get; set; }
     public string Prefeb { get; set; }
     public string Thumbnail { get; set; }
+    public int UnitTypeCount { get; set; }
     public float AttackPower { get; set; }
     public float AttackSpeed { get; set; }
     public float Health { get; set; }

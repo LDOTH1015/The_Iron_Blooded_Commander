@@ -1,10 +1,24 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class btn_DeployedKnight : MonoBehaviour
+public class btn_DeployedKnight : UIContent<KnightDefault>
 {
+    [SerializeField] UI_StrategySetting uIStrategySetting;
+
+    [SerializeField] private Image thumbnailKnight;
+    [SerializeField] private TMP_Text txtKnightName;
+
 
     public void OnClickBtn()
     {
-        UIManager.Instance.Show<UI_PopupKnightInfo>();
+        uIStrategySetting.OnClickBtnKnight(data);
+    }
+
+    public override void SetData(KnightDefault inputData)
+    {
+        base.SetData(inputData);
+        //thumbnailKnight = data.Thumbnail;
+        txtKnightName.text = data.NameKr;
     }
 }

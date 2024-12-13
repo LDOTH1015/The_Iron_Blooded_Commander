@@ -14,6 +14,10 @@ public class UI_StrategySetting : MonoBehaviour
     Camera cameraMapInspectionCamera;
 
     [SerializeField] scrollView_OwnedKnights scrollViewOwnedKnights;
+    [SerializeField] scrollView_DeployedKnights scrollViewDeployedKnights;
+    UI_PopupKnightInfo uiPopupKnightInfo;
+    [SerializeField] scrollView_DeployedUnitTypes scrollViewDeployedUnitTypes;
+
 
 
     private void Start()
@@ -36,8 +40,22 @@ public class UI_StrategySetting : MonoBehaviour
         DragAndDropManager.Instance.SetWorldDragCamera(cameraMapInspectionCamera);
     }
 
-    public void SetKnightData(List<KnightDefault> knightDataLists)
+    public void SetOwnedKnightData(List<KnightDefault> knightDataLists)
     {
         scrollViewOwnedKnights.SetScrollView(knightDataLists);
+    }
+    public void SetDeployedKnightData(List<KnightDefault> knightDataLists)
+    {
+        scrollViewDeployedKnights.SetScrollView(knightDataLists);
+    }
+    public void SetDeployedUnitTypeData(List<UnitType> unitTypeDataLists)
+    {
+        scrollViewDeployedUnitTypes.SetScrollView(unitTypeDataLists);
+    }
+
+    public void OnClickBtnKnight(KnightDefault knightData)
+    {
+        uiPopupKnightInfo = UIManager.Instance.Show<UI_PopupKnightInfo>();
+        uiPopupKnightInfo.SetKnightInfoData(knightData);
     }
 }

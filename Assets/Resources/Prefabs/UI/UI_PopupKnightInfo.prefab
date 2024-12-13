@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 5157970281821945868}
   - component: {fileID: 3164671156244089262}
   m_Layer: 5
-  m_Name: iconKnight
+  m_Name: thumbnailKnight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1812,7 +1812,7 @@ GameObject:
   - component: {fileID: 7070169793253091865}
   - component: {fileID: 1857929804945419145}
   m_Layer: 5
-  m_Name: txtKnightDefenceInfo
+  m_Name: txtKnightDefenseInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2187,7 +2187,7 @@ GameObject:
   - component: {fileID: 6955518642240388237}
   - component: {fileID: 1287271792106775183}
   m_Layer: 5
-  m_Name: txtKnightDefence
+  m_Name: txtKnightDefense
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2630,6 +2630,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  txtKnightNameInfo: {fileID: 9031726159244531126}
+  txtKnightDescriptionInfo: {fileID: 113895269754082433}
+  thumbnailKnight: {fileID: 3164671156244089262}
+  txtKnightAtkPowerInfo: {fileID: 2057672043539374191}
+  txtKnightAtkSpeedInfo: {fileID: 2675167741107357066}
+  txtKnightHealthInfo: {fileID: 7984492060945240568}
+  txtKnightDefenseInfo: {fileID: 1857929804945419145}
+  txtKnightMoveSpeedInfo: {fileID: 4454682009701965704}
+  txtKnightAtkRangeInfo: {fileID: 1928915010281195551}
+  txtKnightLeadershipInfo: {fileID: 8380699710019056318}
+  txtKnightIntelligenceInfo: {fileID: 5187321982719680180}
+  txtKnightLoyaltyInfo: {fileID: 7010159917752722871}
 --- !u!1 &5583723674558265958
 GameObject:
   m_ObjectHideFlags: 0

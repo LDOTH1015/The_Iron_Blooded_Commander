@@ -23,6 +23,14 @@ public class DomainArmy : MonoBehaviour
     // 부대임무리스트
     List<UnitDivisionRole> unitDivisionRoleDataList = new List<UnitDivisionRole>();
 
+    List<Strategy> strategyDataList;
+
+    List<KnightDefault> ownedKnightDataList;
+    List<UnitType> ownedUnitTypeDataList;
+    
+    List<KnightDefault> deployedKnightDataList;
+    List<UnitType> deployedUnitTypeDataList;
+
     public ArmyLord DomainArmyLord
     {
         get { return domainArmyLord; }

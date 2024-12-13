@@ -117,6 +117,13 @@ public class StrategySettingSystem : MonoBehaviour
         {
             knightDataList.Add(knightList[i].KnightData);
         }
-        uI_StrategySetting.SetKnightData(knightDataList);
+        uI_StrategySetting.SetOwnedKnightData(knightDataList);
+        uI_StrategySetting.SetDeployedKnightData(knightDataList);
+        List<UnitType> unitTypeDataList = new List<UnitType>();
+        for (int i = 0; i < unitTypeList.Count; i++)
+        {
+            unitTypeDataList.Add(unitTypeList[i].UnitTypeData);
+        }
+        uI_StrategySetting.SetDeployedUnitTypeData(unitTypeDataList);
     }
 }
